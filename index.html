@@ -1346,6 +1346,10 @@
 
     // ── Waitlist form handler ─────────────────────────────────────────
     const API_BASE_URL = 'https://api.spendorapp.com';
+    const WAITLIST_STORAGE_KEY = 'spendora_waitlist';
+    const WAITLIST_MESSAGE_STORAGE_KEY = 'spendora_waitlist_message';
+    const WAITLIST_SUCCESS_MESSAGE = "You have successfully joined the waitlist. We\'ll notify you at launch. 🎉";
+    const WAITLIST_ALREADY_JOINED_MESSAGE = "You are already on waitlist. Stay tuned for updates!";
 
     function setWaitlistJoinedState(message) {
       const heroForm = document.getElementById('hero-waitlist-form');
@@ -1354,7 +1358,7 @@
       const mainForm = document.getElementById('waitlist-form');
       const mainSuccess = document.getElementById('main-waitlist-success');
       const mainSuccessText = document.getElementById('main-waitlist-success-text');
-      const successMessage = message || "You're on the list! We'll notify you at launch. 🎉";
+      const successMessage = message || WAITLIST_SUCCESS_MESSAGE;
 
       if (heroForm) heroForm.style.display = 'none';
       if (mainForm) mainForm.style.display = 'none';
@@ -1395,13 +1399,15 @@
           throw new Error(result.message || 'Unable to join the waitlist right now.');
         }
 
-        const existing = JSON.parse(localStorage.getItem('spendora_waitlist') || '[]');
+        const successMessage = result.message || WAITLIST_SUCCESS_MESSAGE;
+        const existing = JSON.parse(localStorage.getItem(WAITLIST_STORAGE_KEY) || '[]');
         if (!existing.includes(email)) {
           existing.push(email);
-          localStorage.setItem('spendora_waitlist', JSON.stringify(existing));
+          localStorage.setItem(WAITLIST_STORAGE_KEY, JSON.stringify(existing));
         }
+        localStorage.setItem(WAITLIST_MESSAGE_STORAGE_KEY, successMessage);
 
-        setWaitlistJoinedState(result.message || "You're on the list! We'll notify you at launch. 🎉");
+        setWaitlistJoinedState(successMessage);
       } catch (error) {
         alert(error.message || 'Unable to join the waitlist right now.');
         submitButton.disabled = false;
@@ -1411,9 +1417,10 @@
 
     // Restore success state if already signed up
     window.addEventListener('load', () => {
-      const list = JSON.parse(localStorage.getItem('spendora_waitlist') || '[]');
+      const list = JSON.parse(localStorage.getItem(WAITLIST_STORAGE_KEY) || '[]');
       if (list.length > 0) {
-        setWaitlistJoinedState("You're already on the waitlist. We'll notify you at launch. 🎉");
+        const savedMessage = localStorage.getItem(WAITLIST_MESSAGE_STORAGE_KEY);
+        setWaitlistJoinedState(savedMessage || WAITLIST_ALREADY_JOINED_MESSAGE);
       }
     });
   </script>
