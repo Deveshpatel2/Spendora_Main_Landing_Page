@@ -426,7 +426,7 @@
                   stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                You're on the list! We'll notify you at launch. 🎉
+                <span id="hero-waitlist-success-text">You're on the list! We'll notify you at launch. 🎉</span>
               </div>
             </div>
 
@@ -467,7 +467,7 @@
                     <div class="flex items-center justify-between">
                       <div>
                         <p class="text-xs text-text-muted font-medium">Good morning,</p>
-                        <p class="text-sm font-bold text-text-main">Alex 👋</p>
+                        <p class="text-sm font-bold text-text-main">Dev 👋</p>
                       </div>
                       <div
                         class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
@@ -1124,8 +1124,8 @@
       <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
 
         <div class="fade-up">
-          <div class="inline-flex items-center justify-center mb-6">
-            <img src="assets/spendora_logo.png" alt="Spendora" class="h-20 w-auto" />
+          <div class="flex items-center justify-center mb-6">
+            <img src="assets/favicon.png" alt="Spendora" class="w-24 h-24 object-contain" />
           </div>
 
           <div class="section-badge mb-4" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.9);">
@@ -1160,7 +1160,7 @@
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              You're on the list! We'll be in touch soon. 🎉
+              <span id="main-waitlist-success-text">You're on the list! We'll be in touch soon. 🎉</span>
             </div>
           </div>
 
@@ -1347,15 +1347,26 @@
     // ── Waitlist form handler ─────────────────────────────────────────
     const API_BASE_URL = 'https://api.spendorapp.com';
 
-    function showWaitlistSuccess(source) {
-      if (source === 'hero') {
-        const s = document.getElementById('hero-waitlist-success');
-        s.classList.add('show');
-        s.style.display = 'flex';
-      } else {
-        const s = document.getElementById('main-waitlist-success');
-        s.classList.add('show');
-        s.style.display = 'flex';
+    function setWaitlistJoinedState(message) {
+      const heroForm = document.getElementById('hero-waitlist-form');
+      const heroSuccess = document.getElementById('hero-waitlist-success');
+      const heroSuccessText = document.getElementById('hero-waitlist-success-text');
+      const mainForm = document.getElementById('waitlist-form');
+      const mainSuccess = document.getElementById('main-waitlist-success');
+      const mainSuccessText = document.getElementById('main-waitlist-success-text');
+      const successMessage = message || "You're on the list! We'll notify you at launch. 🎉";
+
+      if (heroForm) heroForm.style.display = 'none';
+      if (mainForm) mainForm.style.display = 'none';
+      if (heroSuccessText) heroSuccessText.textContent = successMessage;
+      if (mainSuccessText) mainSuccessText.textContent = successMessage;
+      if (heroSuccess) {
+        heroSuccess.classList.add('show');
+        heroSuccess.style.display = 'flex';
+      }
+      if (mainSuccess) {
+        mainSuccess.classList.add('show');
+        mainSuccess.style.display = 'flex';
       }
     }
 
@@ -1390,8 +1401,7 @@
           localStorage.setItem('spendora_waitlist', JSON.stringify(existing));
         }
 
-        form.style.display = 'none';
-        showWaitlistSuccess(source);
+        setWaitlistJoinedState(result.message || "You're on the list! We'll notify you at launch. 🎉");
       } catch (error) {
         alert(error.message || 'Unable to join the waitlist right now.');
         submitButton.disabled = false;
@@ -1403,15 +1413,7 @@
     window.addEventListener('load', () => {
       const list = JSON.parse(localStorage.getItem('spendora_waitlist') || '[]');
       if (list.length > 0) {
-        const heroForm = document.getElementById('hero-waitlist-form');
-        const heroSuccess = document.getElementById('hero-waitlist-success');
-        if (heroForm) heroForm.style.display = 'none';
-        if (heroSuccess) { heroSuccess.classList.add('show'); heroSuccess.style.display = 'flex'; }
-
-        const mainForm = document.getElementById('waitlist-form');
-        const mainSuccess = document.getElementById('main-waitlist-success');
-        if (mainForm) mainForm.style.display = 'none';
-        if (mainSuccess) { mainSuccess.classList.add('show'); mainSuccess.style.display = 'flex'; }
+        setWaitlistJoinedState("You're already on the waitlist. We'll notify you at launch. 🎉");
       }
     });
   </script>
