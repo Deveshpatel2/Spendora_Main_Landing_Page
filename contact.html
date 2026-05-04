@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Spendora</title>
+  <meta name="description" content="Contact Spendora for support, privacy requests, partnerships, and product questions." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --dark: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--dark);
+      color: white;
+      padding: 24px;
+    }
+
+    nav,
+    main {
+      width: min(920px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .back {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 44px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin-top: 34px;
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .action {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      background: #fbfdff;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action:hover {
+      border-color: #bfdbfe;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    }
+
+    .action strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .action span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 13px 18px;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 0 20px 36px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 28px 22px;
+        border-radius: 14px;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/spendora_logo.png" alt="Spendora" />
+        <span>Spendora</span>
+      </a>
+      <a class="back" href="index.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact Spendora</h1>
+    <p>
+      For support, privacy requests, launch questions, partnerships, or anything else related to Spendora, email us and
+      we will get back to you as soon as we can.
+    </p>
+
+    <a class="primary" href="mailto:support@spendorapp.com?subject=Spendora%20Support%20Request">Email Support</a>
+
+    <div class="actions" aria-label="Contact options">
+      <a class="action" href="mailto:support@spendorapp.com?subject=Spendora%20Support%20Request">
+        <strong>Support</strong>
+        <span>Help with accounts, app issues, waitlist access, or product questions.</span>
+      </a>
+      <a class="action" href="mailto:support@spendorapp.com?subject=Spendora%20Privacy%20Request">
+        <strong>Privacy Request</strong>
+        <span>Ask to access, correct, delete, or export your personal information.</span>
+      </a>
+      <a class="action" href="mailto:support@spendorapp.com?subject=Spendora%20Security%20Report">
+        <strong>Security</strong>
+        <span>Report a vulnerability, suspicious activity, or unauthorized access concern.</span>
+      </a>
+      <a class="action" href="mailto:support@spendorapp.com?subject=Spendora%20Partnership%20Question">
+        <strong>Partnerships</strong>
+        <span>Business, press, creator, school, or community partnership questions.</span>
+      </a>
+    </div>
+
+    <h2>Response Time</h2>
+    <p>
+      We aim to respond to support and general inquiries within 2 to 5 business days. Privacy and security requests may
+      require identity verification before we can take action.
+    </p>
+  </main>
+
+  <footer>© 2026 Spendora. All rights reserved.</footer>
+</body>
+
+</html>

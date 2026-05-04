@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spendora — Coming Soon | Personal Finance App</title>
+  <meta name="description"
+    content="Spendora is coming soon. Join the waitlist to be first when we launch — track expenses, set budgets, and split bills beautifully on iOS &amp; Android." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spendora — Personal Finance App" />
+  <meta property="og:description"
+    content="Track expenses, set budgets, and split bills with friends. Free on iOS &amp; Android." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/spendora_logo.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB',
+            'primary-dark': '#1D4ED8',
+            'primary-light': '#EFF6FF',
+            bg: '#F5F7FA',
+            surface: '#FFFFFF',
+            'surface-2': '#F8FAFC',
+            'text-main': '#0F172A',
+            'text-muted': '#64748B',
+            'text-light': '#94A3B8',
+            success: '#16A34A',
+            warning: '#F59E0B',
+            danger: '#EF4444',
+            border: '#E5E7EB',
+            'border-light': '#F1F5F9',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 4px 24px rgba(15,23,42,0.08)',
+            'card-hover': '0 8px 32px rgba(15,23,42,0.12)',
+            'btn-primary': '0 8px 32px rgba(37,99,235,0.28)',
+          },
+          borderRadius: {
+            '2xl': '16px',
+            '3xl': '24px',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #F5F7FA;
+      color: #0F172A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Gradient backgrounds */
+    .hero-gradient {
+      background: linear-gradient(135deg, #141922 0%, #1a2a4a 50%, #243B74 100%);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+    }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .fade-up-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .fade-up-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .fade-up-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .fade-up-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    .fade-up-delay-6 {
+      transition-delay: 0.6s;
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+    }
+
+    /* Navbar backdrop */
+    .nav-scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E5E7EB;
+      box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Phone mockup */
+    .phone-frame {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 48px;
+      padding: 12px;
+      box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .phone-screen {
+      background: #F5F7FA;
+      border-radius: 38px;
+      overflow: hidden;
+    }
+
+    .phone-status-bar {
+      background: linear-gradient(135deg, #1D4ED8, #3B82F6);
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    /* Hamburger transition */
+    .hamburger-line {
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .menu-open .line1 {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-open .line2 {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .menu-open .line3 {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    /* Blob decoration */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    /* Stats number */
+    .stat-number {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    /* Section headers */
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.2;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: #EFF6FF;
+      color: #2563EB;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    /* Announcement banner */
+    .announcement-bar {
+      background: linear-gradient(90deg, #1D4ED8, #2563EB, #3B82F6, #2563EB, #1D4ED8);
+      background-size: 300% 100%;
+      animation: shimmer-bar 6s ease infinite;
+    }
+
+    @keyframes shimmer-bar {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* Waitlist input */
+    .waitlist-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+
+    /* Pulse dot */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .pulse-dot {
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    /* Success state */
+    .waitlist-success {
+      display: none;
+    }
+
+    .waitlist-success.show {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body class="bg-bg">
+
+  <!-- ================================================================ -->
+  <!-- ANNOUNCEMENT BANNER -->
+  <!-- ================================================================ -->
+  <div class="announcement-bar py-2.5 px-4 text-center text-white text-sm font-medium relative z-[60]">
+    <span class="inline-flex items-center gap-2 justify-center flex-wrap">
+      <span class="pulse-dot inline-block w-2 h-2 rounded-full bg-white/80 flex-shrink-0"></span>
+      🚀 <strong>Spendora is coming soon</strong> — Join the waitlist and be first in line.
+      <a href="#waitlist" class="underline underline-offset-2 font-semibold hover:text-white/80 transition-colors ml-1">Get Early Access →</a>
+    </span>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- NAVBAR -->
+  <!-- ================================================================ -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-18">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center" aria-label="Spendora home">
+          <img src="assets/spendora_logo.png" alt="Spendora" class="h-14 w-auto" id="logo-img" />
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features"
+            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Features</a>
+          <a href="#how-it-works"
+            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">How It Works</a>
+          <a href="#screenshots"
+            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Screenshots</a>
+          <a href="#waitlist"
+            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Waitlist</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="#waitlist"
+            class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-primary-dark transition-colors shadow-btn-primary"
+            aria-label="Join the Spendora waitlist">
+            Join Waitlist
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg" aria-label="Toggle menu"
+          aria-expanded="false">
+          <span class="hamburger-line line1 block w-5 h-0.5 bg-white rounded-full"></span>
+          <span class="hamburger-line line2 block w-5 h-0.5 bg-white rounded-full"></span>
+          <span class="hamburger-line line3 block w-5 h-0.5 bg-white rounded-full"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+        <div class="py-4 flex flex-col gap-1 border-t border-white/10">
+          <a href="#features"
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Features</a>
+          <a href="#how-it-works"
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">How
+            It Works</a>
+          <a href="#screenshots"
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Screenshots</a>
+          <a href="#waitlist"
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Waitlist</a>
+          <div class="pt-2 px-4">
+            <a href="#waitlist"
+              class="block text-center bg-primary text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-dark transition-colors">
+              Join Waitlist
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ================================================================ -->
+    <!-- HERO SECTION -->
+    <!-- ================================================================ -->
+    <section class="hero-gradient relative overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28" id="hero">
+
+      <!-- Decorative blobs -->
+      <div class="hero-blob w-96 h-96 bg-blue-500 top-0 right-1/4 translate-x-1/2 -translate-y-1/2"></div>
+      <div class="hero-blob w-64 h-64 bg-indigo-500 bottom-0 left-1/4 translate-y-1/2"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left: Text -->
+          <div class="text-center lg:text-left">
+            <div class="section-badge mb-4" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.95);">
+              <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
+              Launching Soon on iOS &amp; Android
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+              Know Where Your<br />
+              <span
+                style="background: linear-gradient(90deg, #60A5FA, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Money Goes.
+              </span>
+            </h1>
+            <p class="text-lg text-white/70 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+              Spendora helps you track daily expenses, set smart budgets, and split bills with friends — beautifully,
+              simply, on your phone.
+            </p>
+
+            <!-- Hero Waitlist Form -->
+            <form id="hero-waitlist-form" class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0" onsubmit="handleWaitlist(event, 'hero')">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                required
+                class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-3.5 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
+                aria-label="Your email address"
+              />
+              <button type="submit"
+                class="flex-shrink-0 btn-gradient text-white font-semibold px-6 py-3.5 rounded-xl shadow-btn-primary hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap">
+                Get Early Access →
+              </button>
+            </form>
+
+            <!-- Hero success -->
+            <div id="hero-waitlist-success" class="waitlist-success mt-4 items-center gap-3 justify-center lg:justify-start">
+              <div class="flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-4 py-3 text-sm font-medium">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                You're on the list! We'll notify you at launch. 🎉
+              </div>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="mt-6 flex items-center gap-4 justify-center lg:justify-start text-white/50 text-sm">
+              <span>✓ Free forever</span>
+              <span class="w-1 h-1 rounded-full bg-white/30"></span>
+              <span>✓ No credit card</span>
+              <span class="w-1 h-1 rounded-full bg-white/30"></span>
+              <span>✓ Early access perks</span>
+            </div>
+          </div>
+
+          <!-- Right: Phone Mockup -->
+          <div class="flex justify-center lg:justify-end" id="screenshots">
+            <div class="relative">
+              <!-- Glow effect -->
+              <div class="absolute inset-0 bg-blue-500 rounded-full blur-3xl opacity-20 scale-90"></div>
+
+              <!-- Phone frame -->
+              <div class="phone-frame relative w-72 lg:w-80" style="aspect-ratio: 9/19;">
+                <div class="phone-screen h-full flex flex-col">
+
+                  <!-- Status bar -->
+                  <div class="phone-status-bar flex-shrink-0">
+                    <span class="text-white text-xs font-semibold">9:41</span>
+                    <div class="w-16 h-4 bg-white/10 rounded-full"></div>
+                    <div class="flex gap-1">
+                      <div class="w-4 h-2.5 bg-white/80 rounded-sm"></div>
+                      <div class="w-1.5 h-2.5 bg-white/50 rounded-sm"></div>
+                    </div>
+                  </div>
+
+                  <!-- App content -->
+                  <div class="flex-1 overflow-hidden bg-gray-50 p-4 flex flex-col gap-3">
+
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-xs text-text-muted font-medium">Good morning,</p>
+                        <p class="text-sm font-bold text-text-main">Alex 👋</p>
+                      </div>
+                      <div
+                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
+                        A</div>
+                    </div>
+
+                    <!-- Balance card -->
+                    <div class="rounded-2xl p-4 text-white"
+                      style="background: linear-gradient(135deg, #1D4ED8, #3B82F6);">
+                      <p class="text-xs text-white/70 mb-1">This Month's Spending</p>
+                      <p class="text-2xl font-extrabold">$1,284.50</p>
+                      <div class="mt-2 flex items-center gap-2">
+                        <span class="text-xs bg-white/20 rounded-full px-2 py-0.5">Budget: $2,000</span>
+                        <span class="text-xs text-green-300">↓ 8% vs last month</span>
+                      </div>
+                    </div>
+
+                    <!-- Budget progress -->
+                    <div class="bg-white rounded-xl p-3 shadow-sm">
+                      <p class="text-xs font-semibold text-text-main mb-2.5">Top Budgets</p>
+                      <div class="space-y-2.5">
+                        <div>
+                          <div class="flex justify-between text-xs mb-1">
+                            <span class="text-text-muted flex items-center gap-1">🍽️ Food</span>
+                            <span class="font-medium text-text-main">$340/$500</span>
+                          </div>
+                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full" style="width:68%; background:#16A34A;"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between text-xs mb-1">
+                            <span class="text-text-muted flex items-center gap-1">🚗 Transport</span>
+                            <span class="font-medium text-text-main">$180/$200</span>
+                          </div>
+                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full" style="width:90%; background:#F59E0B;"></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between text-xs mb-1">
+                            <span class="text-text-muted flex items-center gap-1">🛍️ Shopping</span>
+                            <span class="font-medium text-danger">$290/$250</span>
+                          </div>
+                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full" style="width:100%; background:#EF4444;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Recent transactions -->
+                    <div class="bg-white rounded-xl p-3 shadow-sm flex-1">
+                      <p class="text-xs font-semibold text-text-main mb-2">Recent</p>
+                      <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
+                            style="background:#D1FAE5;">🍽️</div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-xs font-medium text-text-main truncate">Chipotle</p>
+                            <p class="text-xs text-text-light">Today</p>
+                          </div>
+                          <span class="text-xs font-semibold text-danger">-$12.50</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
+                            style="background:#DBEAFE;">🚗</div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-xs font-medium text-text-main truncate">Uber</p>
+                            <p class="text-xs text-text-light">Yesterday</p>
+                          </div>
+                          <span class="text-xs font-semibold text-danger">-$8.00</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
+                            style="background:#EDE9FE;">🛍️</div>
+                          <div class="flex-1 min-w-0">
+                            <p class="text-xs font-medium text-text-main truncate">Amazon</p>
+                            <p class="text-xs text-text-light">Dec 12</p>
+                          </div>
+                          <span class="text-xs font-semibold text-danger">-$34.99</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Bottom nav bar -->
+                  <div class="bg-white border-t border-gray-100 flex justify-around py-3 px-2 flex-shrink-0">
+                    <div class="flex flex-col items-center gap-0.5">
+                      <div class="w-5 h-5 rounded bg-primary/10 flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 rounded-sm bg-primary"></div>
+                      </div>
+                      <span class="text-[9px] text-primary font-semibold">Home</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
+                        <div class="w-2.5 h-0.5 bg-text-light rounded-full"></div>
+                      </div>
+                      <span class="text-[9px] text-text-light">Expenses</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <div class="w-6 h-6 rounded-lg bg-primary flex items-center justify-center">
+                        <span class="text-white text-sm font-bold leading-none">+</span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 rounded-full border border-text-light"></div>
+                      </div>
+                      <span class="text-[9px] text-text-light">Groups</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-0.5">
+                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 rounded-full bg-text-light/50"></div>
+                      </div>
+                      <span class="text-[9px] text-text-light">Profile</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- FEATURES SECTION -->
+    <!-- ================================================================ -->
+    <section id="features" class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-14 fade-up">
+          <div class="section-badge">Features</div>
+          <h2 class="section-title mt-2">Everything you need to<br class="hidden sm:block" /> manage money</h2>
+          <p class="text-text-muted mt-3 text-base max-w-xl mx-auto">
+            Powerful tools that make personal finance feel effortless.
+          </p>
+        </div>
+
+        <!-- Feature cards grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="fade-up fade-up-delay-1 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#EFF6FF;">📊</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Dashboard Overview</h3>
+            <p class="text-text-muted text-sm leading-relaxed">See your total spending, budget progress, and recent
+              transactions at a glance. Stay on top of your finances every day.</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-2 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#FFF7ED;">💸</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Expense Tracking</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Log expenses in seconds. Choose from 14 categories —
+              Food, Travel, Shopping, and more. Add descriptions and dates.</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-3 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#F0FDF4;">💰</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Smart Budgets</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Set monthly spending limits by category. Get visual
+              warnings when you're approaching your limit. Never overspend again.</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-1 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#F5F3FF;">👥</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Split with Friends</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Create groups for trips, roommates, or dinners. Track who
+              owes who and settle up with one tap. No more awkward math.</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-2 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#FFF1F2;">📈</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Visual Reports</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Beautiful pie charts and spending breakdowns by month.
+              Export your data as PDF or CSV for taxes or record-keeping.</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-3 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+              style="background:#FFFBEB;">🔁</div>
+            <h3 class="font-bold text-lg text-text-main mb-2">Recurring Expenses</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Set up daily, weekly, biweekly, monthly, or yearly
+              recurring expenses. Never forget your subscriptions again.</p>
+          </div>
+
+        </div>
+
+        <!-- Bonus feature pills -->
+        <div class="mt-10 fade-up flex flex-wrap gap-3 justify-center">
+          <span
+            class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">🌙
+            Dark Mode</span>
+          <span
+            class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">🌍
+            10 Currencies</span>
+          <span
+            class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">🔐
+            Secure JWT Auth</span>
+          <span
+            class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">📱
+            iOS &amp; Android</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- HOW IT WORKS -->
+    <!-- ================================================================ -->
+    <section id="how-it-works" class="py-20 lg:py-28 bg-surface">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-14 fade-up">
+          <div class="section-badge">Simple Setup</div>
+          <h2 class="section-title mt-2">Up and running in 3 steps</h2>
+          <p class="text-text-muted mt-3 text-base max-w-md mx-auto">
+            No complicated setup. No tutorials needed. Just download and go.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 relative">
+
+          <!-- Connector lines (desktop only) -->
+          <div class="hidden md:block absolute top-7 left-1/3 right-1/3 h-0.5"
+            style="background: linear-gradient(90deg, #2563EB, #93C5FD);"></div>
+
+          <!-- Step 1 -->
+          <div class="fade-up fade-up-delay-1 text-center">
+            <div class="relative inline-flex">
+              <div
+                class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-xl font-extrabold shadow-btn-primary">
+                1</div>
+            </div>
+            <h3 class="font-bold text-lg text-text-main mt-4 mb-2">Create your account</h3>
+            <p class="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
+              Sign up with email or Google. Set your preferred currency and you're ready to go.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="fade-up fade-up-delay-2 text-center">
+            <div class="relative inline-flex">
+              <div
+                class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-xl font-extrabold shadow-btn-primary">
+                2</div>
+            </div>
+            <h3 class="font-bold text-lg text-text-main mt-4 mb-2">Log your first expense</h3>
+            <p class="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
+              Tap the + button, speak or type your expense, pick a category, done. Takes 5 seconds.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="fade-up fade-up-delay-3 text-center">
+            <div class="relative inline-flex">
+              <div
+                class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-xl font-extrabold shadow-btn-primary">
+                3</div>
+            </div>
+            <h3 class="font-bold text-lg text-text-main mt-4 mb-2">Watch your finances grow clearer</h3>
+            <p class="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
+              Check your dashboard daily. Set budgets, create split groups, download monthly reports.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SPLIT GROUPS SPOTLIGHT -->
+    <!-- ================================================================ -->
+    <section class="py-20 lg:py-28 bg-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left: Text -->
+          <div class="fade-up">
+            <div class="section-badge">Split Bills</div>
+            <h2 class="section-title mt-2 mb-4">Split bills. Track balances.<br />Settle up.</h2>
+            <p class="text-text-muted text-base leading-relaxed mb-6">
+              Create groups for any shared expense scenario — road trips, apartment bills, group dinners. Spendora
+              calculates everyone's share, tracks who owes what, and lets you settle with a single tap.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2.5 rounded-full text-sm font-medium text-text-muted shadow-sm">✈️
+                Trips &amp; Travel</span>
+              <span
+                class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2.5 rounded-full text-sm font-medium text-text-muted shadow-sm">🏠
+                Roommates &amp; Home</span>
+              <span
+                class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2.5 rounded-full text-sm font-medium text-text-muted shadow-sm">🍽️
+                Dinners &amp; Outings</span>
+            </div>
+          </div>
+
+          <!-- Right: Split group card mockup -->
+          <div class="fade-up fade-up-delay-2 flex justify-center">
+            <div class="bg-surface rounded-3xl shadow-card border border-border p-6 w-full max-w-sm">
+
+              <!-- Card header -->
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <p class="font-bold text-text-main text-lg">✈️ Trip to NYC</p>
+                  <p class="text-xs text-text-muted mt-0.5">3 members · 12 expenses</p>
+                </div>
+                <div class="flex -space-x-2">
+                  <div
+                    class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold border-2 border-white">
+                    A</div>
+                  <div
+                    class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold border-2 border-white">
+                    J</div>
+                  <div
+                    class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs font-bold border-2 border-white">
+                    S</div>
+                </div>
+              </div>
+
+              <!-- Total -->
+              <div class="bg-primary-light rounded-2xl p-4 mb-4">
+                <p class="text-xs text-text-muted mb-1">Total group spending</p>
+                <p class="text-2xl font-extrabold text-primary">$486.50</p>
+              </div>
+
+              <!-- Balances -->
+              <div class="space-y-3 mb-5">
+                <div class="flex items-center justify-between p-3 bg-surface-2 rounded-xl">
+                  <div class="flex items-center gap-2.5">
+                    <div
+                      class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold">
+                      J</div>
+                    <div>
+                      <p class="text-sm font-medium text-text-main">Jamie owes you</p>
+                      <p class="text-xs text-text-muted">Hotel split</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-success">+$34.50</span>
+                </div>
+
+                <div class="flex items-center justify-between p-3 bg-surface-2 rounded-xl">
+                  <div class="flex items-center gap-2.5">
+                    <div
+                      class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs font-bold">
+                      S</div>
+                    <div>
+                      <p class="text-sm font-medium text-text-main">You owe Sam</p>
+                      <p class="text-xs text-text-muted">Restaurant dinner</p>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold text-danger">-$12.00</span>
+                </div>
+              </div>
+
+              <!-- Settle up button -->
+              <button
+                class="w-full btn-gradient text-white font-semibold py-3 rounded-xl text-sm transition-all hover:opacity-90 active:scale-95"
+                aria-label="Settle up balances">
+                Settle Up →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- BUDGET SPOTLIGHT (reversed) -->
+    <!-- ================================================================ -->
+    <section class="py-20 lg:py-28 bg-surface">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left: Budget card mockup -->
+          <div class="fade-up flex justify-center order-2 lg:order-1">
+            <div class="bg-surface rounded-3xl shadow-card border border-border p-6 w-full max-w-sm">
+
+              <!-- Header -->
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <p class="font-bold text-text-main text-lg">Monthly Budget</p>
+                  <p class="text-xs text-text-muted mt-0.5">May 2025</p>
+                </div>
+                <span class="text-xs font-semibold bg-blue-50 text-primary px-3 py-1 rounded-full">On track</span>
+              </div>
+
+              <!-- Total progress -->
+              <div class="mb-5 p-4 bg-primary-light rounded-2xl">
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="font-medium text-text-main">Total Spent</span>
+                  <span class="font-bold text-primary">$810 / $950</span>
+                </div>
+                <div class="h-2.5 bg-blue-100 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full bg-primary transition-all" style="width:85%;"></div>
+                </div>
+                <p class="text-xs text-text-muted mt-2">$140 remaining this month</p>
+              </div>
+
+              <!-- Category budgets -->
+              <div class="space-y-4">
+
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="flex items-center gap-2 text-text-muted font-medium">
+                      <span class="text-base">🍽️</span> Food &amp; Dining
+                    </span>
+                    <span class="font-semibold text-text-main">$340 / $500</span>
+                  </div>
+                  <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style="width:68%; background:#16A34A;"></div>
+                  </div>
+                  <p class="text-xs text-success mt-1">68% used · On track</p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="flex items-center gap-2 text-text-muted font-medium">
+                      <span class="text-base">🚗</span> Transportation
+                    </span>
+                    <span class="font-semibold text-text-main">$180 / $200</span>
+                  </div>
+                  <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style="width:90%; background:#F59E0B;"></div>
+                  </div>
+                  <p class="text-xs text-warning mt-1">90% used · Getting close</p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-sm mb-1.5">
+                    <span class="flex items-center gap-2 text-text-muted font-medium">
+                      <span class="text-base">🛍️</span> Shopping
+                    </span>
+                    <span class="font-semibold text-danger">$290 / $250</span>
+                  </div>
+                  <div class="h-2.5 bg-red-100 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style="width:100%; background:#EF4444;"></div>
+                  </div>
+                  <p class="text-xs text-danger mt-1">116% · Over budget by $40</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Text -->
+          <div class="fade-up fade-up-delay-2 order-1 lg:order-2">
+            <div class="section-badge">Smart Budgets</div>
+            <h2 class="section-title mt-2 mb-4">Set limits. Track pace.<br />Stay in control.</h2>
+            <p class="text-text-muted text-base leading-relaxed mb-6">
+              Create budgets for any spending category. Spendora color-codes your progress — green when you're on track,
+              amber as a warning, red if you've gone over. Monthly insights keep you accountable.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-success"></div>
+                </div>
+                <p class="text-sm text-text-muted"><span class="font-semibold text-text-main">Green</span> — comfortably
+                  within budget</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-warning/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-warning"></div>
+                </div>
+                <p class="text-sm text-text-muted"><span class="font-semibold text-text-main">Amber</span> — approaching
+                  your limit</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-danger/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div class="w-2 h-2 rounded-full bg-danger"></div>
+                </div>
+                <p class="text-sm text-text-muted"><span class="font-semibold text-text-main">Red</span> — over budget,
+                  time to cut back</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- CATEGORIES SECTION -->
+    <!-- ================================================================ -->
+    <section class="py-20 lg:py-24 bg-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-10 fade-up">
+          <div class="section-badge">Categories</div>
+          <h2 class="section-title mt-2">14 spending categories</h2>
+          <p class="text-text-muted mt-3 text-base max-w-md mx-auto">
+            Every expense finds its place. Track spending by category with beautiful color coding.
+          </p>
+        </div>
+
+        <div class="fade-up flex flex-wrap gap-3 justify-center">
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#10B981;"></div>
+            <span class="text-base">🍽️</span>
+            <span class="text-sm font-medium text-text-main">Food &amp; Dining</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#10B981;"></div>
+            <span class="text-base">🛒</span>
+            <span class="text-sm font-medium text-text-main">Groceries</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#3B82F6;"></div>
+            <span class="text-base">🚗</span>
+            <span class="text-sm font-medium text-text-main">Transportation</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#8B5CF6;"></div>
+            <span class="text-base">🛍️</span>
+            <span class="text-sm font-medium text-text-main">Shopping</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#EC4899;"></div>
+            <span class="text-base">☕</span>
+            <span class="text-sm font-medium text-text-main">Entertainment</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#EF4444;"></div>
+            <span class="text-base">💊</span>
+            <span class="text-sm font-medium text-text-main">Healthcare</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#F59E0B;"></div>
+            <span class="text-base">⚡</span>
+            <span class="text-sm font-medium text-text-main">Utilities</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#6366F1;"></div>
+            <span class="text-base">🏠</span>
+            <span class="text-sm font-medium text-text-main">Housing / Rent</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#14B8A6;"></div>
+            <span class="text-base">🎓</span>
+            <span class="text-sm font-medium text-text-main">Education</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#F97316;"></div>
+            <span class="text-base">✈️</span>
+            <span class="text-sm font-medium text-text-main">Travel</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#EC4899;"></div>
+            <span class="text-base">😊</span>
+            <span class="text-sm font-medium text-text-main">Personal Care</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#8B5CF6;"></div>
+            <span class="text-base">🎁</span>
+            <span class="text-sm font-medium text-text-main">Gifts &amp; Donations</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#64748B;"></div>
+            <span class="text-base">📄</span>
+            <span class="text-sm font-medium text-text-main">Bills &amp; Fees</span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2.5 bg-surface border border-border px-4 py-2.5 rounded-full shadow-sm card-hover cursor-default">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background:#6B7280;"></div>
+            <span class="text-base">➕</span>
+            <span class="text-sm font-medium text-text-main">Other</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- STATS SECTION -->
+    <!-- ================================================================ -->
+    <section class="py-16 lg:py-20 bg-surface border-y border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div class="fade-up text-center">
+            <div class="stat-number text-primary mb-1">14</div>
+            <p class="text-text-muted text-sm font-medium">Spending Categories</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-1 text-center">
+            <div class="stat-number text-primary mb-1">10</div>
+            <p class="text-text-muted text-sm font-medium">Supported Currencies</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-2 text-center">
+            <div class="stat-number text-primary mb-1">5<span class="text-3xl font-bold">s</span></div>
+            <p class="text-text-muted text-sm font-medium">To Log an Expense</p>
+          </div>
+
+          <div class="fade-up fade-up-delay-3 text-center">
+            <div class="stat-number text-primary mb-1">∞</div>
+            <p class="text-text-muted text-sm font-medium">Groups You Can Create</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- WAITLIST CTA SECTION -->
+    <!-- ================================================================ -->
+    <section id="waitlist" class="py-20 lg:py-28 hero-gradient relative overflow-hidden">
+
+      <!-- Background decoration -->
+      <div class="hero-blob w-96 h-96 bg-blue-500 top-0 right-0 translate-x-1/3 -translate-y-1/3" aria-hidden="true"></div>
+      <div class="hero-blob w-64 h-64 bg-indigo-600 bottom-0 left-0 -translate-x-1/3 translate-y-1/3" aria-hidden="true"></div>
+
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+
+        <div class="fade-up">
+          <div class="inline-flex items-center justify-center mb-6">
+            <img src="assets/spendora_logo.png" alt="Spendora" class="h-20 w-auto" />
+          </div>
+
+          <div class="section-badge mb-4" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.9);">
+            <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
+            Coming Soon
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+            Be first when<br />Spendora launches.
+          </h2>
+          <p class="text-white/65 text-base lg:text-lg mb-10 max-w-lg mx-auto">
+            Drop your email and we'll notify you the moment we go live — plus early access members get exclusive perks.
+          </p>
+
+          <!-- Waitlist form -->
+          <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleWaitlist(event, 'main')">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              required
+              class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-5 py-4 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
+              aria-label="Your email address"
+            />
+            <button type="submit"
+              class="flex-shrink-0 bg-white text-primary font-bold px-7 py-4 rounded-xl hover:bg-gray-50 active:scale-95 transition-all text-sm shadow-btn-primary whitespace-nowrap">
+              Notify Me 🚀
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div id="main-waitlist-success" class="waitlist-success mt-4 flex-col items-center gap-2">
+            <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-5 py-3 text-sm font-medium">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              You're on the list! We'll be in touch soon. 🎉
+            </div>
+          </div>
+
+          <!-- Perks -->
+          <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+              <div class="text-2xl mb-2">⚡</div>
+              <p class="text-white font-semibold text-sm">Early Access</p>
+              <p class="text-white/50 text-xs mt-1">First to use the app before public launch</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+              <div class="text-2xl mb-2">🎁</div>
+              <p class="text-white font-semibold text-sm">Exclusive Perks</p>
+              <p class="text-white/50 text-xs mt-1">Special features reserved for waitlist members</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+              <div class="text-2xl mb-2">🔔</div>
+              <p class="text-white font-semibold text-sm">Launch Alerts</p>
+              <p class="text-white/50 text-xs mt-1">Be notified the second we go live on iOS &amp; Android</p>
+            </div>
+          </div>
+
+          <p class="text-white/30 text-xs mt-8">No spam, ever. Unsubscribe anytime. · spendorapp.com</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================ -->
+  <!-- FOOTER -->
+  <!-- ================================================================ -->
+  <footer class="bg-text-main py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+        <!-- Brand column -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center mb-3">
+            <img src="assets/spendora_logo.png" alt="Spendora" class="h-14 w-auto" />
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+            Know where your money goes. Track expenses, set budgets, and split bills — all in one place.
+          </p>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Product</h4>
+          <ul class="space-y-3">
+            <li><a href="#features" class="text-gray-400 text-sm hover:text-white transition-colors">Features</a></li>
+            <li><a href="#how-it-works" class="text-gray-400 text-sm hover:text-white transition-colors">How It
+                Works</a></li>
+            <li><a href="#waitlist" class="text-gray-400 text-sm hover:text-white transition-colors">Join Waitlist</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="privacy.html" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="terms.html" class="text-gray-400 text-sm hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="contact.html" class="text-gray-400 text-sm hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Spendora. All rights reserved.</p>
+        <p class="text-gray-500 text-xs">Made with ❤️ for people who care about their money</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================================================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- ================================================================ -->
+  <script>
+    // ── Navbar behavior ──────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const hamburgerLines = document.querySelectorAll('.hamburger-line');
+
+    let scrolled = false;
+
+    function updateNavbar() {
+      const isScrolled = window.scrollY > 40;
+      if (isScrolled === scrolled) return;
+      scrolled = isScrolled;
+
+      if (isScrolled) {
+        navbar.classList.add('nav-scrolled');
+        navLinks.forEach(l => {
+          l.style.color = '#64748B';
+          l.onmouseenter = () => l.style.color = '#0F172A';
+          l.onmouseleave = () => l.style.color = '#64748B';
+        });
+        hamburgerLines.forEach(l => l.style.background = '#0F172A');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+        navLinks.forEach(l => {
+          l.style.color = 'rgba(255,255,255,0.8)';
+          l.onmouseenter = () => l.style.color = 'white';
+          l.onmouseleave = () => l.style.color = 'rgba(255,255,255,0.8)';
+        });
+        hamburgerLines.forEach(l => l.style.background = 'white');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    // ── Hamburger menu ────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      hamburger.setAttribute('aria-expanded', String(menuOpen));
+      hamburger.classList.toggle('menu-open', menuOpen);
+      mobileMenu.classList.toggle('open', menuOpen);
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.classList.remove('menu-open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── Scroll animations (IntersectionObserver) ──────────────────────
+    const fadeElements = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px',
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Immediately show elements already in view on load
+    window.addEventListener('load', () => {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('visible');
+        }
+      });
+    });
+
+    // ── Smooth scroll for anchor links ─────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ── Waitlist form handler ─────────────────────────────────────────
+    const API_BASE_URL = 'https://api.spendorapp.com';
+
+    function showWaitlistSuccess(source) {
+      if (source === 'hero') {
+        const s = document.getElementById('hero-waitlist-success');
+        s.classList.add('show');
+        s.style.display = 'flex';
+      } else {
+        const s = document.getElementById('main-waitlist-success');
+        s.classList.add('show');
+        s.style.display = 'flex';
+      }
+    }
+
+    async function handleWaitlist(e, source) {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.querySelector('input[type="email"]').value;
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.textContent;
+      submitButton.textContent = 'Joining...';
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/waitlist`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || result.success === false) {
+          throw new Error(result.message || 'Unable to join the waitlist right now.');
+        }
+
+        const existing = JSON.parse(localStorage.getItem('spendora_waitlist') || '[]');
+        if (!existing.includes(email)) {
+          existing.push(email);
+          localStorage.setItem('spendora_waitlist', JSON.stringify(existing));
+        }
+
+        form.style.display = 'none';
+        showWaitlistSuccess(source);
+      } catch (error) {
+        alert(error.message || 'Unable to join the waitlist right now.');
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.originalText;
+      }
+    }
+
+    // Restore success state if already signed up
+    window.addEventListener('load', () => {
+      const list = JSON.parse(localStorage.getItem('spendora_waitlist') || '[]');
+      if (list.length > 0) {
+        const heroForm = document.getElementById('hero-waitlist-form');
+        const heroSuccess = document.getElementById('hero-waitlist-success');
+        if (heroForm) heroForm.style.display = 'none';
+        if (heroSuccess) { heroSuccess.classList.add('show'); heroSuccess.style.display = 'flex'; }
+
+        const mainForm = document.getElementById('waitlist-form');
+        const mainSuccess = document.getElementById('main-waitlist-success');
+        if (mainForm) mainForm.style.display = 'none';
+        if (mainSuccess) { mainSuccess.classList.add('show'); mainSuccess.style.display = 'flex'; }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
