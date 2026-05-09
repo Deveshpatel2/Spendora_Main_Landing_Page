@@ -85,13 +85,136 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Gradient backgrounds */
+    /* Premium backgrounds */
     .hero-gradient {
-      background: linear-gradient(135deg, #141922 0%, #1a2a4a 50%, #243B74 100%);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(59, 130, 246, 0.28), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(147, 197, 253, 0.18), transparent 28%),
+        radial-gradient(circle at 72% 86%, rgba(29, 78, 216, 0.22), transparent 34%),
+        linear-gradient(135deg, #141922 0%, #243B74 100%);
     }
 
     .btn-gradient {
-      background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+    }
+
+    .brand-glow {
+      box-shadow: 0 18px 52px rgba(37, 99, 235, 0.28), 0 8px 28px rgba(15, 23, 42, 0.16);
+    }
+
+    .hero-shell {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        rgba(255, 255, 255, 0.06);
+      background-size: 42px 42px, 42px 42px, auto;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.34);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .money-word {
+      background: linear-gradient(90deg, #BFDBFE, #60A5FA, #FFFFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-proof-item {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .hero-proof-item strong {
+      display: block;
+      color: white;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .hero-proof-item span {
+      display: block;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.76rem;
+      margin-top: 5px;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      pointer-events: none;
+    }
+
+    .hero-orbit.one {
+      inset: -34px -48px 18px -32px;
+      transform: rotate(-9deg);
+    }
+
+    .hero-orbit.two {
+      inset: 38px -72px -36px -54px;
+      transform: rotate(12deg);
+    }
+
+    .app-float-card {
+      position: absolute;
+      z-index: 5;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(226, 232, 240, 0.92);
+      box-shadow: 0 20px 46px rgba(15, 23, 42, 0.18);
+      padding: 12px;
+      min-width: 170px;
+      backdrop-filter: blur(12px);
+    }
+
+    .app-float-card.left {
+      left: -84px;
+      bottom: 20%;
+    }
+
+    .app-float-card.right {
+      right: -76px;
+      top: 16%;
+    }
+
+    .phone-island {
+      width: 92px;
+      height: 26px;
+      border-radius: 999px;
+      background: #020617;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .logo-wordmark {
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-left: 10px;
+    }
+
+    .nav-scrolled .logo-wordmark {
+      color: #0F172A;
     }
 
     /* Scroll animations */
@@ -203,15 +326,6 @@
       opacity: 1;
     }
 
-    /* Blob decoration */
-    .hero-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
     /* Stats number */
     .stat-number {
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -288,6 +402,50 @@
     .waitlist-success.show {
       display: flex;
     }
+
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 18px 0;
+      height: 3px;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, #1D4ED8, #3B82F6, #93C5FD);
+      opacity: 0;
+      transform: translateY(3px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .feature-card:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-proof {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .app-float-card {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -300,10 +458,10 @@
     class="announcement-bar py-4 sm:py-5 px-4 text-center text-white text-base sm:text-lg font-medium relative z-[60]">
     <span class="inline-flex items-center gap-3 justify-center flex-wrap">
       <span class="pulse-dot inline-block w-2.5 h-2.5 rounded-full bg-white/80 flex-shrink-0"></span>
-      🚀 <strong>Spendora is coming soon</strong> — Join the waitlist and be first in line.
+      <strong>Spendora is coming soon</strong> — Join the waitlist and be first in line.
       <a href="#waitlist" class="underline underline-offset-4 font-bold hover:text-white/80 transition-colors ml-1">Get
         Early Access
-        →</a>
+      </a>
     </span>
   </div>
 
@@ -317,6 +475,7 @@
         <!-- Logo -->
         <a href="index.html" class="flex items-center" aria-label="Spendora home">
           <img src="assets/spendora_logo.png" alt="Spendora" class="h-14 w-auto" id="logo-img" />
+          <span class="logo-wordmark hidden sm:inline">Spendora</span>
         </a>
 
         <!-- Desktop Nav Links -->
@@ -377,222 +536,365 @@
     <!-- ================================================================ -->
     <!-- HERO SECTION -->
     <!-- ================================================================ -->
-    <section class="hero-gradient relative overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28" id="hero">
-
-      <!-- Decorative blobs -->
-      <div class="hero-blob w-96 h-96 bg-blue-500 top-0 right-1/4 translate-x-1/2 -translate-y-1/2"></div>
-      <div class="hero-blob w-64 h-64 bg-indigo-500 bottom-0 left-1/4 translate-y-1/2"></div>
-
+    <section class="hero-gradient relative overflow-hidden pt-28 pb-14 lg:pt-36 lg:pb-20" id="hero">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="hero-shell rounded-3xl p-5 sm:p-8 lg:p-10">
+          <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
 
-          <!-- Left: Text -->
-          <div class="text-center lg:text-left">
-            <div class="section-badge mb-4" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.95);">
-              <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
-              Launching Soon on iOS &amp; Android
-            </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              Know Where Your<br />
-              <span
-                style="background: linear-gradient(90deg, #60A5FA, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                Money Goes.
-              </span>
-            </h1>
-            <p class="text-lg text-white/70 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-              Spendora helps you track daily expenses, set smart budgets, and split bills with friends — beautifully,
-              simply, on your phone.
-            </p>
-
-            <!-- Hero Waitlist Form -->
-            <form id="hero-waitlist-form"
-              class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0"
-              onsubmit="handleWaitlist(event, 'hero')">
-              <input type="email" placeholder="Enter your email" required
-                class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-3.5 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
-                aria-label="Your email address" />
-              <button type="submit"
-                class="flex-shrink-0 btn-gradient text-white font-semibold px-6 py-3.5 rounded-xl shadow-btn-primary hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap">
-                Get Early Access →
-              </button>
-            </form>
-
-            <!-- Hero success -->
-            <div id="hero-waitlist-success"
-              class="waitlist-success mt-4 items-center gap-3 justify-center lg:justify-start">
-              <div
-                class="flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-4 py-3 text-sm font-medium">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span id="hero-waitlist-success-text">You're on the list! We'll notify you at launch. 🎉</span>
+            <!-- Left: Text -->
+            <div class="text-center lg:text-left">
+              <div class="hero-kicker mb-5">
+                <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
+                Launching soon on iOS and Android
               </div>
-            </div>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                Make every dollar feel easier to <span class="money-word">understand.</span>
+              </h1>
+              <p class="text-lg text-white/70 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+                Spendora turns daily spending, budgets, shared bills, and monthly reports into one calm mobile dashboard
+                you can actually keep up with.
+              </p>
 
-            <!-- Trust badges -->
-            <div class="mt-6 flex items-center gap-4 justify-center lg:justify-start text-white/50 text-sm">
-              <span>✓ Free forever</span>
-              <span class="w-1 h-1 rounded-full bg-white/30"></span>
-              <span>✓ No credit card</span>
-              <span class="w-1 h-1 rounded-full bg-white/30"></span>
-              <span>✓ Early access perks</span>
-            </div>
-          </div>
+              <!-- Hero Waitlist Form -->
+              <form id="hero-waitlist-form"
+                class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0"
+                onsubmit="handleWaitlist(event, 'hero')">
+                <input type="email" placeholder="Enter your email" required
+                  class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-3.5 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
+                  aria-label="Your email address" />
+                <button type="submit"
+                  class="flex-shrink-0 btn-gradient brand-glow text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap">
+                  Get Early Access
+                </button>
+              </form>
 
-          <!-- Right: Phone Mockup -->
-          <div class="flex justify-center lg:justify-end" id="screenshots">
-            <div class="relative">
-              <!-- Glow effect -->
-              <div class="absolute inset-0 bg-blue-500 rounded-full blur-3xl opacity-20 scale-90"></div>
+              <!-- Hero success -->
+              <div id="hero-waitlist-success"
+                class="waitlist-success mt-4 items-center gap-3 justify-center lg:justify-start">
+                <div
+                  class="flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-4 py-3 text-sm font-medium">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span id="hero-waitlist-success-text">You're on the list! We'll notify you at launch. 🎉</span>
+                </div>
+              </div>
 
-              <!-- Phone frame -->
-              <div class="phone-frame relative w-72 lg:w-80" style="aspect-ratio: 9/19;">
-                <div class="phone-screen h-full flex flex-col">
-
-                  <!-- Status bar -->
-                  <div class="phone-status-bar flex-shrink-0">
-                    <span class="text-white text-xs font-semibold">9:41</span>
-                    <div class="w-16 h-4 bg-white/10 rounded-full"></div>
-                    <div class="flex gap-1">
-                      <div class="w-4 h-2.5 bg-white/80 rounded-sm"></div>
-                      <div class="w-1.5 h-2.5 bg-white/50 rounded-sm"></div>
-                    </div>
-                  </div>
-
-                  <!-- App content -->
-                  <div class="flex-1 overflow-hidden bg-gray-50 p-4 flex flex-col gap-3">
-
-                    <!-- Header -->
-                    <div class="flex items-center justify-between">
-                      <div>
-                        <p class="text-xs text-text-muted font-medium">Good morning,</p>
-                        <p class="text-sm font-bold text-text-main">Dev 👋</p>
-                      </div>
-                      <div
-                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
-                        A</div>
-                    </div>
-
-                    <!-- Balance card -->
-                    <div class="rounded-2xl p-4 text-white"
-                      style="background: linear-gradient(135deg, #1D4ED8, #3B82F6);">
-                      <p class="text-xs text-white/70 mb-1">This Month's Spending</p>
-                      <p class="text-2xl font-extrabold">$1,284.50</p>
-                      <div class="mt-2 flex items-center gap-2">
-                        <span class="text-xs bg-white/20 rounded-full px-2 py-0.5">Budget: $2,000</span>
-                        <span class="text-xs text-green-300">↓ 8% vs last month</span>
-                      </div>
-                    </div>
-
-                    <!-- Budget progress -->
-                    <div class="bg-white rounded-xl p-3 shadow-sm">
-                      <p class="text-xs font-semibold text-text-main mb-2.5">Top Budgets</p>
-                      <div class="space-y-2.5">
-                        <div>
-                          <div class="flex justify-between text-xs mb-1">
-                            <span class="text-text-muted flex items-center gap-1">🍽️ Food</span>
-                            <span class="font-medium text-text-main">$340/$500</span>
-                          </div>
-                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                            <div class="h-full rounded-full" style="width:68%; background:#16A34A;"></div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="flex justify-between text-xs mb-1">
-                            <span class="text-text-muted flex items-center gap-1">🚗 Transport</span>
-                            <span class="font-medium text-text-main">$180/$200</span>
-                          </div>
-                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                            <div class="h-full rounded-full" style="width:90%; background:#F59E0B;"></div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="flex justify-between text-xs mb-1">
-                            <span class="text-text-muted flex items-center gap-1">🛍️ Shopping</span>
-                            <span class="font-medium text-danger">$290/$250</span>
-                          </div>
-                          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                            <div class="h-full rounded-full" style="width:100%; background:#EF4444;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Recent transactions -->
-                    <div class="bg-white rounded-xl p-3 shadow-sm flex-1">
-                      <p class="text-xs font-semibold text-text-main mb-2">Recent</p>
-                      <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
-                            style="background:#D1FAE5;">🍽️</div>
-                          <div class="flex-1 min-w-0">
-                            <p class="text-xs font-medium text-text-main truncate">Chipotle</p>
-                            <p class="text-xs text-text-light">Today</p>
-                          </div>
-                          <span class="text-xs font-semibold text-danger">-$12.50</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
-                            style="background:#DBEAFE;">🚗</div>
-                          <div class="flex-1 min-w-0">
-                            <p class="text-xs font-medium text-text-main truncate">Uber</p>
-                            <p class="text-xs text-text-light">Yesterday</p>
-                          </div>
-                          <span class="text-xs font-semibold text-danger">-$8.00</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
-                            style="background:#EDE9FE;">🛍️</div>
-                          <div class="flex-1 min-w-0">
-                            <p class="text-xs font-medium text-text-main truncate">Amazon</p>
-                            <p class="text-xs text-text-light">Dec 12</p>
-                          </div>
-                          <span class="text-xs font-semibold text-danger">-$34.99</span>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <!-- Bottom nav bar -->
-                  <div class="bg-white border-t border-gray-100 flex justify-around py-3 px-2 flex-shrink-0">
-                    <div class="flex flex-col items-center gap-0.5">
-                      <div class="w-5 h-5 rounded bg-primary/10 flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-sm bg-primary"></div>
-                      </div>
-                      <span class="text-[9px] text-primary font-semibold">Home</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-0.5">
-                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
-                        <div class="w-2.5 h-0.5 bg-text-light rounded-full"></div>
-                      </div>
-                      <span class="text-[9px] text-text-light">Expenses</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-0.5">
-                      <div class="w-6 h-6 rounded-lg bg-primary flex items-center justify-center">
-                        <span class="text-white text-sm font-bold leading-none">+</span>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-center gap-0.5">
-                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-full border border-text-light"></div>
-                      </div>
-                      <span class="text-[9px] text-text-light">Groups</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-0.5">
-                      <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 rounded-full bg-text-light/50"></div>
-                      </div>
-                      <span class="text-[9px] text-text-light">Profile</span>
-                    </div>
-                  </div>
-
+              <!-- Trust metrics -->
+              <div class="hero-proof mt-8 max-w-xl mx-auto lg:mx-0">
+                <div class="hero-proof-item">
+                  <strong>5 sec</strong>
+                  <span>expense logging</span>
+                </div>
+                <div class="hero-proof-item">
+                  <strong>14</strong>
+                  <span>smart categories</span>
+                </div>
+                <div class="hero-proof-item">
+                  <strong>$0</strong>
+                  <span>to join waitlist</span>
                 </div>
               </div>
             </div>
+
+            <!-- Right: Phone Mockup -->
+            <div class="flex justify-center lg:justify-end" id="screenshots">
+              <div class="relative">
+                <div class="hero-orbit one" aria-hidden="true"></div>
+                <div class="hero-orbit two" aria-hidden="true"></div>
+                <div class="app-float-card right" aria-hidden="true">
+                  <p class="text-xs font-bold uppercase tracking-[0.12em] text-primary mb-2">Live Snapshot</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-bold text-text-main">This month</span>
+                    <span class="text-lg font-extrabold text-text-main">$200</span>
+                  </div>
+                  <div class="mt-3 h-2 bg-blue-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary rounded-full" style="width:29%;"></div>
+                  </div>
+                  <p class="text-xs text-text-muted font-semibold mt-2">$500 left in budget</p>
+                </div>
+                <div class="app-float-card left" aria-hidden="true">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm font-extrabold text-text-main">Split ready</p>
+                      <p class="text-xs text-text-muted font-semibold">Groups stay organized.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Phone frame -->
+                <div class="phone-frame relative w-72 lg:w-80 brand-glow" style="aspect-ratio: 9/19;">
+                  <div class="phone-screen h-full flex flex-col bg-[#F5F7FA]">
+
+                    <!-- Status bar -->
+                    <div class="flex-shrink-0 bg-white px-5 pt-3 pb-2.5">
+                      <div class="flex items-center justify-between text-text-main">
+                        <div>
+                          <p class="text-[17px] leading-none font-extrabold">8:20</p>
+                          <p class="text-[9px] mt-1 font-bold text-text-main">◂ Safari</p>
+                        </div>
+                        <div class="phone-island"></div>
+                        <div class="flex items-center gap-1.5">
+                          <div class="flex gap-0.5">
+                            <span class="w-1 h-1 rounded-full bg-text-light"></span>
+                            <span class="w-1 h-1 rounded-full bg-text-light"></span>
+                            <span class="w-1 h-1 rounded-full bg-text-light"></span>
+                            <span class="w-1 h-1 rounded-full bg-text-light"></span>
+                          </div>
+                          <span class="text-xs font-bold">⌁</span>
+                          <div class="w-5 h-3 rounded-[4px] border border-text-light p-0.5">
+                            <div class="h-full rounded-[2px] bg-text-main"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- App content -->
+                    <div class="flex-1 overflow-hidden bg-[#F5F7FA] px-5 pt-3 pb-3 flex flex-col gap-3">
+
+                      <!-- Header -->
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                          <img src="assets/favicon.png" alt="Spendora" class="w-10 h-10 object-contain" />
+                          <div>
+                            <p class="text-[20px] leading-none font-extrabold text-primary">Spendora</p>
+                            <p class="text-[10px] font-bold text-text-muted mt-1">- Make Every Spend Count. -</p>
+                          </div>
+                        </div>
+                        <div
+                          class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white text-xs font-extrabold">
+                          D</div>
+                      </div>
+
+                      <div>
+                        <h3 class="text-[23px] font-extrabold text-text-main leading-tight">Hello, Dev </h3>
+                        <p class="text-sm font-semibold text-text-muted mt-1">Friday, May 8</p>
+                      </div>
+
+                      <!-- Summary cards -->
+                      <div class="grid grid-cols-3 gap-2.5">
+                        <div class="bg-white rounded-2xl py-2.5 text-center shadow-sm">
+                          <p class="text-lg font-extrabold text-text-main leading-none">2</p>
+                          <p class="text-[10px] font-bold text-text-muted mt-1">transactions</p>
+                        </div>
+                        <div class="bg-white rounded-2xl py-2.5 text-center shadow-sm">
+                          <p class="text-lg font-extrabold text-text-main leading-none">$25</p>
+                          <p class="text-[10px] font-bold text-text-muted mt-1">per day avg</p>
+                        </div>
+                        <div class="bg-white rounded-2xl py-2.5 text-center shadow-sm">
+                          <p class="text-lg font-extrabold text-text-main leading-none">8</p>
+                          <p class="text-[10px] font-bold text-text-muted mt-1">days elapsed</p>
+                        </div>
+                      </div>
+
+                      <!-- Monthly spend card -->
+                      <div class="rounded-2xl p-3.5 text-white shadow-card"
+                        style="background: linear-gradient(135deg, #141922, #243B74);">
+                        <div class="flex items-center justify-between mb-3">
+                          <p class="text-[11px] tracking-[0.12em] uppercase font-bold text-white/55">May 2026</p>
+                          <p class="text-xs font-bold text-white/70">View Budget</p>
+                        </div>
+                        <p class="text-[38px] font-extrabold leading-none">$200</p>
+                        <p class="text-sm font-semibold text-white/55 mt-2">total spent this month</p>
+                        <div class="mt-3 h-2 bg-white/15 rounded-full overflow-hidden">
+                          <div class="h-full bg-success rounded-full" style="width:29%;"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-3">
+                          <span
+                            class="inline-flex items-center gap-1.5 bg-white text-success text-xs font-extrabold rounded-full px-3 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-success"></span>$500 left
+                          </span>
+                          <span class="text-xs font-semibold text-white/55">29% of $700</span>
+                        </div>
+                      </div>
+
+                      <!-- Actions -->
+                      <div class="grid grid-cols-2 gap-2.5">
+                        <button
+                          class="bg-primary text-white rounded-xl py-2.5 text-sm font-extrabold shadow-btn-primary flex items-center justify-center gap-2"
+                          aria-label="Add expense preview">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                            <path d="M12 5v14M5 12h14" />
+                          </svg>
+                          Add Expense
+                        </button>
+                        <button
+                          class="bg-white text-text-main rounded-xl py-2.5 text-sm font-extrabold shadow-sm flex items-center justify-center gap-2"
+                          aria-label="Split bill preview">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                          </svg>
+                          Split Bill
+                        </button>
+                      </div>
+
+                      <!-- Recent expenses -->
+                      <div class="flex items-center justify-between">
+                        <p class="text-base font-extrabold text-text-main">Recent Expenses</p>
+                        <p class="text-sm font-extrabold text-primary">View All</p>
+                      </div>
+
+                      <div class="space-y-3">
+                        <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm">
+                          <div
+                            class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M4 3v7a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V3" />
+                              <path d="M8 3v18" />
+                              <path d="M19 3v18" />
+                              <path d="M15 3h4" />
+                            </svg>
+                          </div>
+                          <div class="flex-1">
+                            <p class="text-sm font-extrabold text-text-main">Restaurant</p>
+                            <p class="text-xs font-semibold text-text-muted">2d ago</p>
+                          </div>
+                          <span class="text-sm font-extrabold text-danger">-$150.00</span>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm">
+                          <div
+                            class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M4 3v7a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V3" />
+                              <path d="M8 3v18" />
+                              <path d="M19 3v18" />
+                              <path d="M15 3h4" />
+                            </svg>
+                          </div>
+                          <div class="flex-1">
+                            <p class="text-sm font-extrabold text-text-main">Market</p>
+                            <p class="text-xs font-semibold text-text-muted">2d ago</p>
+                          </div>
+                          <span class="text-sm font-extrabold text-danger">-$50.00</span>
+                        </div>
+                      </div>
+
+                    <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm border-l-4 border-success">
+                      <svg class="text-warning flex-shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5A4.8 4.8 0 0 0 18 8a6 6 0 0 0-12 0c0 1.3.5 2.5 1.5 3.5.8.8 1.3 1.5 1.5 2.5" />
+                        <path d="M9 18h6" />
+                        <path d="M10 22h4" />
+                      </svg>
+                      <p class="text-xs font-bold text-text-muted">Your spending is right on track for the month.</p>
+                    </div>
+
+                      <div class="mt-auto bg-white rounded-2xl shadow-card px-4 py-2 flex items-center justify-between">
+                        <div class="flex flex-col items-center gap-1">
+                        <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="m3 10 9-7 9 7" />
+                            <path d="M5 10v10h14V10" />
+                            <path d="M9 20v-6h6v6" />
+                          </svg>
+                        </div>
+                          <span class="text-[10px] text-primary font-bold">Home</span>
+                        </div>
+                      <div class="flex flex-col items-center gap-1">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                          </svg>
+                        </div>
+                        <span class="text-[10px] text-text-muted font-semibold">Expense</span>
+                      </div>
+                        <div
+                          class="w-11 h-11 -mt-6 rounded-full bg-primary text-white flex items-center justify-center text-3xl shadow-btn-primary border-8 border-blue-100">
+                          +
+                        </div>
+                      <div class="flex flex-col items-center gap-1">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                          </svg>
+                        </div>
+                        <span class="text-[10px] text-text-muted font-semibold">Split</span>
+                      </div>
+                      <div class="flex flex-col items-center gap-1">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12a9 9 0 1 1-9-9v9z" />
+                            <path d="M21 12h-9V3" />
+                          </svg>
+                        </div>
+                        <span class="text-[10px] text-text-muted font-semibold">Budget</span>
+                      </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- VALUE STRIP -->
+    <!-- ================================================================ -->
+    <section class="bg-surface border-b border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-center">
+          <div class="fade-up">
+            <div class="section-badge">Why Spendora</div>
+            <h2 class="section-title mt-2 mb-4">Personal finance without the spreadsheet feeling.</h2>
+            <p class="text-text-muted text-base leading-relaxed">
+              Most money apps feel like extra work. Spendora is designed for quick check-ins, fast logging, and shared
+              expenses that stay organized after the dinner, trip, or rent payment is over.
+            </p>
           </div>
 
+          <div class="comparison-row fade-up fade-up-delay-2">
+            <div class="bg-surface-2 border border-border rounded-2xl p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.14em] text-text-light mb-4">Without Spendora</p>
+              <div class="space-y-3">
+                <p class="flex gap-3 text-sm text-text-muted"><span class="text-danger font-bold">-</span> Receipts and
+                  notes scattered everywhere</p>
+                <p class="flex gap-3 text-sm text-text-muted"><span class="text-danger font-bold">-</span> Budgets
+                  checked only after overspending</p>
+                <p class="flex gap-3 text-sm text-text-muted"><span class="text-danger font-bold">-</span> Group bills
+                  handled through awkward reminders</p>
+              </div>
+            </div>
+
+            <div class="bg-white border border-blue-100 rounded-2xl p-5 shadow-card">
+              <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary mb-4">With Spendora</p>
+              <div class="space-y-3">
+                <p class="flex gap-3 text-sm text-text-main"><span class="text-success font-bold">+</span> Expenses
+                  logged in seconds</p>
+                <p class="flex gap-3 text-sm text-text-main"><span class="text-success font-bold">+</span> Budgets show
+                  progress before it is too late</p>
+                <p class="flex gap-3 text-sm text-text-main"><span class="text-success font-bold">+</span> Friends,
+                  balances, and settlements stay in one place</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -605,61 +907,68 @@
 
         <div class="text-center mb-14 fade-up">
           <div class="section-badge">Features</div>
-          <h2 class="section-title mt-2">Everything you need to<br class="hidden sm:block" /> manage money</h2>
+          <h2 class="section-title mt-2">A calmer way to manage everyday money</h2>
           <p class="text-text-muted mt-3 text-base max-w-xl mx-auto">
-            Powerful tools that make personal finance feel effortless.
+            Built for the small decisions that shape your month: coffee, rides, rent, trips, subscriptions, and shared
+            plans.
           </p>
         </div>
 
         <!-- Feature cards grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <div class="fade-up fade-up-delay-1 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#EFF6FF;">📊</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Dashboard Overview</h3>
+            <h3 class="font-bold text-lg text-text-main mb-2">Daily Money Snapshot</h3>
             <p class="text-text-muted text-sm leading-relaxed">See your total spending, budget progress, and recent
               transactions at a glance. Stay on top of your finances every day.</p>
           </div>
 
-          <div class="fade-up fade-up-delay-2 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFF7ED;">💸</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Expense Tracking</h3>
-            <p class="text-text-muted text-sm leading-relaxed">Log expenses in seconds. Choose from 14 categories —
-              Food, Travel, Shopping, and more. Add descriptions and dates.</p>
+            <h3 class="font-bold text-lg text-text-main mb-2">Fast Expense Tracking</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Log expenses in seconds with useful categories, dates,
+              and notes that keep your history searchable.</p>
           </div>
 
-          <div class="fade-up fade-up-delay-3 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-3 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#F0FDF4;">💰</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Smart Budgets</h3>
-            <p class="text-text-muted text-sm leading-relaxed">Set monthly spending limits by category. Get visual
-              warnings when you're approaching your limit. Never overspend again.</p>
+            <h3 class="font-bold text-lg text-text-main mb-2">Smart Budget Signals</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Set monthly limits by category and see clear visual
+              signals before small habits turn into overspending.</p>
           </div>
 
-          <div class="fade-up fade-up-delay-1 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#F5F3FF;">👥</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Split with Friends</h3>
+            <h3 class="font-bold text-lg text-text-main mb-2">Stress-Free Splits</h3>
             <p class="text-text-muted text-sm leading-relaxed">Create groups for trips, roommates, or dinners. Track who
               owes who and settle up with one tap. No more awkward math.</p>
           </div>
 
-          <div class="fade-up fade-up-delay-2 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFF1F2;">📈</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Visual Reports</h3>
-            <p class="text-text-muted text-sm leading-relaxed">Beautiful pie charts and spending breakdowns by month.
-              Export your data as PDF or CSV for taxes or record-keeping.</p>
+            <h3 class="font-bold text-lg text-text-main mb-2">Useful Reports</h3>
+            <p class="text-text-muted text-sm leading-relaxed">Understand where your money went with monthly breakdowns.
+              Export your data as PDF or CSV when you need records.</p>
           </div>
 
-          <div class="fade-up fade-up-delay-3 bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+          <div
+            class="fade-up fade-up-delay-3 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFFBEB;">🔁</div>
             <h3 class="font-bold text-lg text-text-main mb-2">Recurring Expenses</h3>
-            <p class="text-text-muted text-sm leading-relaxed">Set up daily, weekly, biweekly, monthly, or yearly
-              recurring expenses. Never forget your subscriptions again.</p>
+            <p class="text-text-muted text-sm leading-relaxed">Track daily, weekly, biweekly, monthly, or yearly bills
+              so subscriptions and repeat payments never sneak up on you.</p>
           </div>
 
         </div>
@@ -1114,13 +1423,6 @@
     <!-- WAITLIST CTA SECTION -->
     <!-- ================================================================ -->
     <section id="waitlist" class="py-20 lg:py-28 hero-gradient relative overflow-hidden">
-
-      <!-- Background decoration -->
-      <div class="hero-blob w-96 h-96 bg-blue-500 top-0 right-0 translate-x-1/3 -translate-y-1/3" aria-hidden="true">
-      </div>
-      <div class="hero-blob w-64 h-64 bg-indigo-600 bottom-0 left-0 -translate-x-1/3 translate-y-1/3"
-        aria-hidden="true"></div>
-
       <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
 
         <div class="fade-up">
@@ -1134,10 +1436,10 @@
           </div>
 
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-            Be first when<br />Spendora launches.
+            Get the launch invite before everyone else.
           </h2>
           <p class="text-white/65 text-base lg:text-lg mb-10 max-w-lg mx-auto">
-            Drop your email and we'll notify you the moment we go live — plus early access members get exclusive perks.
+            Join the early list for launch updates, first access, and a front-row seat as Spendora rolls out on mobile.
           </p>
 
           <!-- Waitlist form -->
@@ -1148,7 +1450,7 @@
               aria-label="Your email address" />
             <button type="submit"
               class="flex-shrink-0 bg-white text-primary font-bold px-7 py-4 rounded-xl hover:bg-gray-50 active:scale-95 transition-all text-sm shadow-btn-primary whitespace-nowrap">
-              Notify Me 🚀
+              Notify Me
             </button>
           </form>
 
