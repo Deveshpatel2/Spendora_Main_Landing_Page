@@ -102,6 +102,12 @@
       font-size: 1.25rem;
     }
 
+    h3 {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
     p,
     li {
       color: var(--muted);
@@ -125,6 +131,42 @@
       margin: 28px 0;
     }
 
+    .toc {
+      columns: 2;
+      padding-left: 20px;
+    }
+
+    .toc li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      color: var(--text);
+    }
+
+    .termly-credit {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 40px;
+    }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -141,6 +183,15 @@
       nav {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .toc {
+        columns: 1;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
       }
     }
   </style>
@@ -159,91 +210,334 @@
 
   <main>
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: May 4, 2026</p>
+    <p class="meta">Last updated: May 11, 2026</p>
 
     <p>
-      This Privacy Policy explains how Spendora collects, uses, stores, and protects information when you use our
-      website, join our waitlist, or use the Spendora mobile app.
+      This Privacy Notice for Spendora ("we," "us," or "our") describes how and why we access, collect, store, use, and
+      share personal information when you use our services, including our website, waitlist, mobile application, and
+      related services, features, marketing, or events.
     </p>
 
     <div class="notice">
-      Spendora is designed to help you manage personal finances. We are not a bank, credit provider, broker, tax advisor,
-      or financial advisor.
+      Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our
+      policies and practices, please do not use Spendora. For questions, contact us at
+      <a href="mailto:supportspendora@gmail.com">supportspendora@gmail.com</a>.
     </div>
 
-    <h2>Information We Collect</h2>
-    <p>Depending on how you use Spendora, we may collect:</p>
-    <ul>
-      <li>Contact information, such as your email address when you join the waitlist or contact us.</li>
-      <li>Account information, such as your name, email address, password credentials, preferred currency, and profile settings.</li>
-      <li>Finance information you choose to enter, such as expenses, budgets, categories, groups, split expenses, recurring expenses, and related notes.</li>
-      <li>Uploaded content, such as receipts or profile images if you choose to upload them.</li>
-      <li>Technical information, such as device type, browser type, app version, IP address, error logs, and basic usage activity.</li>
-    </ul>
+    <h2 id="toc">Table of Contents</h2>
+    <ol class="toc">
+      <li><a href="#summary">Summary of Key Points</a></li>
+      <li><a href="#infocollect">What Information Do We Collect?</a></li>
+      <li><a href="#infouse">How Do We Process Your Information?</a></li>
+      <li><a href="#legalbases">What Legal Bases Do We Rely On?</a></li>
+      <li><a href="#whoshare">When and With Whom Do We Share Information?</a></li>
+      <li><a href="#sociallogins">How Do We Handle Social Logins?</a></li>
+      <li><a href="#intltransfers">Is Your Information Transferred Internationally?</a></li>
+      <li><a href="#inforetain">How Long Do We Keep Your Information?</a></li>
+      <li><a href="#infosafe">How Do We Keep Your Information Safe?</a></li>
+      <li><a href="#privacyrights">What Are Your Privacy Rights?</a></li>
+      <li><a href="#dnt">Controls for Do-Not-Track Features</a></li>
+      <li><a href="#uslaws">US State Privacy Rights</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#policyupdates">Updates to This Notice</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#request">Review, Update, or Delete Your Data</a></li>
+    </ol>
 
-    <h2>How We Use Information</h2>
-    <p>We use information to:</p>
+    <h2 id="summary">Summary of Key Points</h2>
+    <p>
+      We process personal information depending on how you interact with Spendora, the choices you make, and the
+      features you use. We may process sensitive information, including financial data, when necessary with your consent
+      or as otherwise permitted by law. We do not collect information from third parties except where you choose to use a
+      supported social login or third-party integration.
+    </p>
+    <p>
+      We use information to provide, improve, and administer Spendora, communicate with you, protect against fraud and
+      security issues, and comply with law. We do not sell your personal information. You may have rights to access,
+      correct, delete, export, or restrict certain uses of your personal information depending on where you live.
+    </p>
+    <div class="notice">
+      Spendora does not sell your personal information or financial data. Spendora does not currently connect to your
+      bank account or pull transaction data from financial institutions. Financial information you enter is used to
+      provide budgeting, expense tracking, reporting, sharing, and related app features.
+    </div>
+
+    <h2 id="infocollect">1. What Information Do We Collect?</h2>
+    <h3 id="personalinfo">Personal Information You Disclose to Us</h3>
+    <p>
+      We collect personal information that you voluntarily provide when you register for Spendora, join our waitlist,
+      express interest in our products or services, participate in activities on Spendora, or otherwise contact us.
+    </p>
+    <p>The personal information we collect may include:</p>
     <ul>
-      <li>Provide, operate, secure, and improve Spendora.</li>
-      <li>Create and manage accounts, budgets, expenses, groups, reports, and app preferences.</li>
+      <li>Names.</li>
+      <li>Email addresses.</li>
+      <li>Passwords and authentication credentials.</li>
+      <li>Financial data you choose to enter, such as expenses, budgets, categories, groups, split expenses, recurring expenses, balances, reports, and related notes.</li>
+      <li>Uploaded content, such as receipts or profile images, if you choose to upload them.</li>
+      <li>Device, browser, app version, error log, and basic usage information needed to operate and improve Spendora.</li>
+    </ul>
+    <p>
+      All personal information you provide must be true, complete, and accurate, and you must notify us of any changes.
+    </p>
+
+    <h3>Financial Data</h3>
+    <p>
+      Spendora is designed to help you organize information about your money. We use financial data you enter to power
+      core app features such as budgeting, expense tracking, charts, summaries, group expense sharing, recurring expense
+      reminders, and reports. We do not use your financial data to determine credit eligibility, provide loans, provide
+      investment advice, or sell financial products.
+    </p>
+    <p>
+      Spendora does not currently connect to bank accounts, credit cards, brokerage accounts, or other financial
+      institutions. If we add bank connections or similar integrations in the future, we will update this Privacy Notice
+      and provide any additional disclosures or consent flows required by law and platform rules.
+    </p>
+
+    <h3 id="sensitiveinfo">Sensitive Information</h3>
+    <p>
+      When necessary, with your consent or as otherwise permitted by applicable law, we may process financial data and
+      other information that may be considered sensitive in certain jurisdictions.
+    </p>
+
+    <h3>Application Data</h3>
+    <p>
+      If you use the Spendora application, we may request permission to send push notifications about your account or app
+      features. You can opt out of push notifications in your device settings. Application data is primarily needed to
+      maintain security, operate the app, troubleshoot issues, and support internal analytics and reporting.
+    </p>
+
+    <h3>Google API</h3>
+    <p>
+      If Spendora uses information received from Google APIs, our use and transfer of that information will adhere to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer" target="_blank">Google API Services User Data Policy</a>,
+      including the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" rel="noopener noreferrer" target="_blank">Limited Use requirements</a>.
+    </p>
+
+    <h2 id="infouse">2. How Do We Process Your Information?</h2>
+    <p>
+      We process your information to provide, improve, and administer Spendora, communicate with you, protect security,
+      prevent fraud, comply with law, and process information for other purposes with your consent.
+    </p>
+    <ul>
+      <li>Create, authenticate, and manage user accounts.</li>
+      <li>Provide, operate, secure, and improve Spendora features.</li>
+      <li>Manage budgets, expenses, groups, reports, preferences, and app settings.</li>
       <li>Send waitlist, launch, account, verification, password reset, and support messages.</li>
       <li>Detect, prevent, and respond to fraud, abuse, security incidents, and technical issues.</li>
       <li>Comply with legal obligations and enforce our Terms of Service.</li>
+      <li>Protect an individual's vital interests, such as preventing harm.</li>
     </ul>
 
-    <h2>How We Share Information</h2>
+    <h2 id="legalbases">3. What Legal Bases Do We Rely On?</h2>
     <p>
-      We do not sell your personal information. We may share limited information with service providers who help us run
-      Spendora, such as hosting, database, analytics, email delivery, authentication, file storage, and customer support
-      providers. We may also share information when required by law, to protect rights and safety, or in connection with a
-      merger, acquisition, financing, or sale of assets.
+      We process personal information only when we believe it is necessary and we have a valid legal reason to do so,
+      such as consent, compliance with law, performance of a contract, protection of rights, protection of vital
+      interests, or legitimate business interests where permitted.
+    </p>
+    <p>
+      If you are located in the European Economic Area, United Kingdom, Switzerland, or Canada, you may have additional
+      rights under applicable data protection laws, including the right to withdraw consent at any time where processing
+      is based on consent.
     </p>
 
-    <h2>Data Storage and Security</h2>
+    <h2 id="whoshare">4. When and With Whom Do We Share Your Personal Information?</h2>
     <p>
-      We use reasonable technical and organizational safeguards to protect information. No online service can guarantee
-      absolute security, so you should use a strong password, keep your login credentials private, and contact us if you
-      suspect unauthorized access.
+      We may share personal information in specific situations and with service providers who help us run Spendora,
+      including hosting, database, analytics, email delivery, authentication, file storage, crash reporting, security,
+      app store, and customer support providers. These providers are allowed to process information only as needed to
+      provide services to us and are not permitted to sell your personal information. We may also share or transfer
+      information in connection with a merger, financing, acquisition, sale of company assets, or similar business
+      transaction.
+    </p>
+    <p>
+      We do not sell your personal information or financial data. We have not disclosed, sold, or shared personal
+      information to third parties for a business or commercial purpose in the preceding twelve (12) months, and we do not
+      plan to sell or share personal information belonging to website visitors, users, or other consumers.
     </p>
 
-    <h2>Retention</h2>
+    <h2 id="sociallogins">5. How Do We Handle Your Social Logins?</h2>
     <p>
-      We keep information for as long as needed to provide Spendora, comply with legal obligations, resolve disputes,
-      enforce agreements, and maintain security. Waitlist emails may be kept until you unsubscribe or ask us to delete
-      them.
+      If you choose to register or log in using a third-party social media account, we may receive profile information
+      from that provider. This may include your name, email address, profile picture, friends list, or other information
+      you choose to make public, depending on the provider. We use this information only for purposes described in this
+      Privacy Notice or otherwise made clear to you in Spendora.
+    </p>
+    <p>
+      We do not control how third-party social media providers use your information. Please review their privacy notices
+      and privacy settings.
     </p>
 
-    <h2>Your Choices and Rights</h2>
+    <h2 id="intltransfers">6. Is Your Information Transferred Internationally?</h2>
     <p>
-      You may request access, correction, deletion, or export of your personal information by contacting us. You may also
-      opt out of marketing emails by using the unsubscribe link when available or by contacting us directly. Depending on
-      where you live, you may have additional privacy rights under laws such as the California Consumer Privacy Act or
-      similar state privacy laws.
+      Regardless of your location, your information may be transferred to, stored by, and processed by us and our service
+      providers in the United States and other countries. These countries may not have data protection laws as
+      comprehensive as those in your country, but we will take appropriate measures to protect your information in
+      accordance with this Privacy Notice and applicable law.
     </p>
 
-    <h2>Children's Privacy</h2>
+    <h2 id="inforetain">7. How Long Do We Keep Your Information?</h2>
+    <p>
+      We keep personal information for as long as necessary for the purposes set out in this Privacy Notice unless a
+      longer retention period is required or permitted by law. No purpose in this notice will require us to keep personal
+      information longer than the period of time in which users have an account with us, unless otherwise required or
+      permitted by law.
+    </p>
+    <p>
+      When we have no ongoing legitimate business need to process personal information, we will delete or anonymize it.
+      If deletion is not immediately possible, such as when information is stored in backup archives, we will securely
+      store and isolate it from further processing until deletion is possible.
+    </p>
+
+    <h2 id="infosafe">8. How Do We Keep Your Information Safe?</h2>
+    <p>
+      We use reasonable technical and organizational safeguards designed to protect personal information. However, no
+      electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure. You
+      should access Spendora only within a secure environment and contact us if you suspect unauthorized access.
+    </p>
+
+    <h2 id="privacyrights">9. What Are Your Privacy Rights?</h2>
+    <p>
+      Depending on your country, province, or state of residence, you may have rights to request access to personal
+      information, obtain a copy, correct inaccuracies, request deletion, restrict processing, object to processing,
+      request data portability, withdraw consent, or appeal certain privacy decisions.
+    </p>
+    <p>
+      You may review, change, or terminate your account by logging in to your account settings. Upon a request to
+      terminate your account, we will deactivate or delete your account and information from active databases, subject to
+      retention needed to prevent fraud, troubleshoot problems, assist investigations, enforce legal terms, or comply
+      with legal requirements.
+    </p>
+    <p>
+      If an in-app account deletion option is available, you may use it to request deletion directly from your account.
+      You may also request account deletion by emailing
+      <a href="mailto:supportspendora@gmail.com?subject=Spendora%20Account%20Deletion">supportspendora@gmail.com</a>.
+      We may need to verify your identity before deleting account data.
+    </p>
+    <p>
+      To exercise your rights, submit a
+      <a href="https://app.termly.io/dsar/40c89a52-9b3d-4930-a0fe-f60e5348bd55" rel="noopener noreferrer" target="_blank">data subject access request</a>
+      or contact us at <a href="mailto:supportspendora@gmail.com">supportspendora@gmail.com</a>.
+    </p>
+
+    <h2 id="dnt">10. Controls for Do-Not-Track Features</h2>
+    <p>
+      Most web browsers and some mobile operating systems include a Do-Not-Track ("DNT") setting. Because there is no
+      uniform technology standard for recognizing and implementing DNT signals, we do not currently respond to DNT browser
+      signals or other mechanisms that automatically communicate a choice not to be tracked online. If a standard is
+      adopted that we must follow in the future, we will describe that practice in a revised version of this Privacy
+      Notice.
+    </p>
+
+    <h2 id="uslaws">11. Do United States Residents Have Specific Privacy Rights?</h2>
+    <p>
+      If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland,
+      Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, Virginia, or
+      another state with applicable privacy laws, you may have the right to request access to details about the personal
+      information we maintain about you, correct inaccuracies, obtain a copy, delete personal information, withdraw
+      consent, or opt out of certain processing activities.
+    </p>
+    <h3>Categories of Personal Information</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>Collected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A. Identifiers</td>
+          <td>Name, email address, online identifiers, account name, and similar contact details.</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>B. California customer records information</td>
+          <td>Name, contact information, and financial information you choose to provide.</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>D. Commercial information</td>
+          <td>Transaction information, financial details, budgets, expenses, payment-related information, and purchase history where applicable.</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>F. Internet or network activity</td>
+          <td>Device, browser, usage, diagnostics, app interaction, and error log data.</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>K. Inferences</td>
+          <td>Preferences, settings, categories, summaries, or insights generated from your use of Spendora.</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>L. Sensitive personal information</td>
+          <td>Financial data, account credentials, or other sensitive data where applicable.</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      We use and retain collected personal information as needed to provide Spendora and as described in this Privacy
+      Notice. We may disclose personal information to service providers under written contracts. We do not use sensitive
+      personal information for purposes that require a right to limit under California law unless we provide the required
+      notice and choice.
+    </p>
+    <h3>How to Exercise US Privacy Rights</h3>
+    <p>
+      To exercise applicable US privacy rights, submit a
+      <a href="https://app.termly.io/dsar/40c89a52-9b3d-4930-a0fe-f60e5348bd55" rel="noopener noreferrer" target="_blank">data subject access request</a>,
+      email <a href="mailto:supportspendora@gmail.com">supportspendora@gmail.com</a>, or use the contact details below.
+      We may need to verify your identity before processing a request. Authorized agents may submit requests where
+      permitted by law, but we may require proof of authorization and identity verification.
+    </p>
+    <h3>Appeals</h3>
+    <p>
+      If we decline to take action on your request and applicable law gives you an appeal right, you may appeal by
+      emailing <a href="mailto:supportspendora@gmail.com">supportspendora@gmail.com</a>. If your appeal is denied, you
+      may submit a complaint to your state attorney general where permitted by law.
+    </p>
+    <h3>California Shine the Light Law</h3>
+    <p>
+      California Civil Code Section 1798.83 permits California residents to request, once per year and free of charge,
+      information about categories of personal information disclosed to third parties for direct marketing purposes and
+      the names and addresses of those third parties. To make such a request, contact us using the details below.
+    </p>
+
+    <h2 id="children">12. Children's Privacy</h2>
     <p>
       Spendora is not intended for children under 13, and we do not knowingly collect personal information from children
-      under 13. If you believe a child has provided us personal information, contact us so we can delete it.
+      under 13. If you believe a child has provided us personal information, contact us at
+      <a href="mailto:supportspendora@gmail.com">supportspendora@gmail.com</a> so we can take appropriate steps to delete
+      it.
     </p>
 
-    <h2>International Users</h2>
+    <h2 id="policyupdates">13. Do We Make Updates to This Notice?</h2>
     <p>
-      If you use Spendora from outside the United States, your information may be processed in the United States or other
-      countries where our service providers operate. These countries may have different data protection laws than your
-      location.
+      Yes. We may update this Privacy Notice from time to time to stay compliant with relevant laws and reflect changes
+      to Spendora. The updated version will be indicated by an updated date at the top of this page. If we make material
+      changes, we may notify you by prominently posting a notice or sending a direct notification.
     </p>
 
-    <h2>Changes to This Policy</h2>
+    <h2 id="contact">14. How Can You Contact Us About This Notice?</h2>
     <p>
-      We may update this Privacy Policy from time to time. If changes are material, we will take reasonable steps to
-      notify users, such as updating the effective date or providing an in-app or email notice.
-    </p>
-
-    <h2>Contact Us</h2>
-    <p>
-      For privacy requests or questions, contact us at
+      If you have questions or comments about this notice, email us at
       <a href="mailto:supportspendora@gmail.com?subject=Spendora%20Privacy%20Request">supportspendora@gmail.com</a>.
+    </p>
+
+    <h2 id="request">15. How Can You Review, Update, or Delete the Data We Collect From You?</h2>
+    <p>
+      Based on applicable law, you may request access to the personal information we collect from you, details about how
+      we process it, correction of inaccuracies, deletion, export, or withdrawal of consent. To request review, update,
+      or deletion of your personal information, please submit a
+      <a href="https://app.termly.io/dsar/40c89a52-9b3d-4930-a0fe-f60e5348bd55" rel="noopener noreferrer" target="_blank">data subject access request</a>.
+    </p>
+
+    <p class="termly-credit">
+      This Privacy Policy was created using Termly's Privacy Policy Generator and adapted for Spendora.
     </p>
   </main>
 
