@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account | Spendora</title>
+  <meta name="description" content="How to delete your Spendora account and associated app data." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --dark: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--dark);
+      color: white;
+      padding: 24px;
+    }
+
+    nav,
+    main {
+      width: min(920px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .back {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 44px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin-top: 34px;
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .notice {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 28px 0;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 0 20px 36px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 28px 22px;
+        border-radius: 14px;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/spendora_logo.png" alt="Spendora" />
+        <span>Spendora</span>
+      </a>
+      <a class="back" href="index.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Delete Your Spendora Account</h1>
+    <p class="meta">Last updated: May 12, 2026</p>
+
+    <p>
+      You can delete your Spendora account directly in the app by going to
+      <strong>Settings &gt; Delete Account</strong>.
+    </p>
+
+    <div class="notice">
+      Public account deletion URL: <strong>https://spendorapp.com/delete-account</strong>.
+    </div>
+
+    <h2>Request Deletion by Email</h2>
+    <p>
+      If you cannot access the app or need help deleting your account, contact us at
+      <a href="mailto:supportspendora@gmail.com?subject=Spendora%20Account%20Deletion">supportspendora@gmail.com</a>.
+      We may need to verify that you own the account before deleting it.
+    </p>
+
+    <h2>What Gets Deleted</h2>
+    <p>Account deletion removes your Spendora account and associated app data, including:</p>
+    <ul>
+      <li>Account information.</li>
+      <li>Expenses.</li>
+      <li>Budgets.</li>
+      <li>Groups.</li>
+      <li>Splits.</li>
+      <li>Settlements.</li>
+      <li>Recurring expenses.</li>
+      <li>Refresh tokens.</li>
+      <li>Push notification tokens.</li>
+    </ul>
+
+    <h2>Limited Retention</h2>
+    <p>
+      We may retain limited information if required for security, fraud prevention, legal compliance, dispute
+      resolution,
+      or enforcement of our Terms of Service. Any retained information will be handled according to our
+      <a href="privacy.html">Privacy Policy</a>.
+    </p>
+  </main>
+
+  <footer>© 2026 Spendora. All rights reserved.</footer>
+</body>
+
+</html>
