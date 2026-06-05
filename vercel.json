@@ -22,6 +22,21 @@
           "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://api.spendorapp.com https://vitals.vercel-insights.com; img-src 'self' data:; frame-ancestors 'self' https://vercel.com https://*.vercel.com;"
         }
       ]
+    },
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
+      ]
     }
+  ],
+  "rewrites": [
+    { "source": "/join/(.*)", "destination": "/join/index.html" }
   ]
 }

@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.spendora.mobile",
+      "sha256_cert_fingerprints": [
+        "22:D0:16:1A:D1:91:28:17:3B:0E:89:4B:0C:04:BC:F4:37:04:EC:33:F2:B4:7D:B5:8F:EC:81:2C:EF:C8:13:0A",
+        "35:21:7C:7B:75:95:5D:5C:6E:99:20:D1:A2:58:ED:71:A4:CD:72:E8:38:AF:83:56:44:F1:EE:95:F3:77:62:3F"
+      ]
+    }
+  }
+]

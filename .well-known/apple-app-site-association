@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["6Q35Z52H49.com.spendora.mobile"],
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "Group invite links open the Spendora app"
+          }
+        ]
+      }
+    ]
+  }
+}
