@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spendora — Coming Soon | Personal Finance App</title>
+  <title>Spendora — Expense Tracker, Budgets &amp; Bill Splitting | iPhone</title>
   <meta name="description"
-    content="Spendora is coming soon. Join the waitlist to be first when we launch — track expenses, set budgets, and split bills beautifully on iOS &amp; Android." />
+    content="Track expenses, set budgets, and split bills with Spendora. Download Spendora on iPhone from the App Store." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Spendora — Personal Finance App" />
   <meta property="og:description"
-    content="Track expenses, set budgets, and split bills with friends. Free on iOS &amp; Android." />
+    content="Track expenses, set budgets, and split bills with Spendora. Download Spendora on iPhone from the App Store." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/spendora_logo.png" />
 
@@ -367,12 +367,6 @@
       }
     }
 
-    /* Waitlist input */
-    .waitlist-input:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-    }
-
     /* Pulse dot */
     @keyframes pulse-dot {
 
@@ -388,15 +382,6 @@
 
     .pulse-dot {
       animation: pulse-dot 1.5s ease-in-out infinite;
-    }
-
-    /* Success state */
-    .waitlist-success {
-      display: none;
-    }
-
-    .waitlist-success.show {
-      display: flex;
     }
 
     .feature-card {
@@ -454,9 +439,10 @@
     class="announcement-bar py-4 sm:py-5 px-4 text-center text-white text-base sm:text-lg font-medium relative z-[60]">
     <span class="inline-flex items-center gap-3 justify-center flex-wrap">
       <span class="pulse-dot inline-block w-2.5 h-2.5 rounded-full bg-white/80 flex-shrink-0"></span>
-      <strong>Spendora is coming soon</strong> — Join the waitlist and be first in line.
-      <a href="#waitlist" class="underline underline-offset-4 font-bold hover:text-white/80 transition-colors ml-1">Get
-        Early Access
+      <strong>Spendora is now on the App Store</strong> · Track expenses, budgets, and shared bills in one place.
+      <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
+        class="underline underline-offset-4 font-bold hover:text-white/80 transition-colors ml-1">Download
+        Now
       </a>
     </span>
   </div>
@@ -482,16 +468,16 @@
             class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">How It Works</a>
           <a href="#screenshots"
             class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">App Preview</a>
-          <a href="#waitlist"
-            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Waitlist</a>
+          <a href="#download"
+            class="text-sm font-medium text-white/80 hover:text-white transition-colors nav-link">Download</a>
         </div>
 
         <!-- Desktop CTA -->
         <div class="hidden md:block">
-          <a href="#waitlist"
+          <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
             class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-primary-dark transition-colors shadow-btn-primary"
-            aria-label="Join the Spendora waitlist">
-            Join Waitlist
+            aria-label="Download Spendora on the App Store">
+            Download App
           </a>
         </div>
 
@@ -514,12 +500,12 @@
             It Works</a>
           <a href="#screenshots"
             class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">App Preview</a>
-          <a href="#waitlist"
-            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Waitlist</a>
+          <a href="#download"
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Download</a>
           <div class="pt-2 px-4">
-            <a href="#waitlist"
+            <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
               class="block text-center bg-primary text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-dark transition-colors">
-              Join Waitlist
+              Download App
             </a>
           </div>
         </div>
@@ -541,50 +527,25 @@
             <div class="text-center lg:text-left">
               <div class="hero-kicker mb-5">
                 <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
-                Launching soon on iOS and Android
+                Available now on the App Store
               </div>
               <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                 Make every dollar feel easier to <span class="money-word">understand.</span>
               </h1>
               <p class="text-lg text-white/70 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Spendora turns daily spending, budgets, shared bills, and monthly reports into one calm mobile dashboard
-                you can actually keep up with.
+                Spendora turns daily spending, budgets, and shared bills into one calm mobile dashboard.
               </p>
 
-              <!-- Hero Waitlist Form -->
-              <form id="hero-waitlist-form"
-                class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0"
-                onsubmit="handleWaitlist(event, 'hero')">
-                <input type="email" placeholder="Enter your email" required
-                  class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-3.5 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
-                  aria-label="Your email address" />
-                <button type="submit"
-                  class="flex-shrink-0 btn-gradient brand-glow text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap">
-                  Get Early Access
-                </button>
-              </form>
-
-              <!-- Hero success -->
-              <div id="hero-waitlist-success"
-                class="waitlist-success mt-4 items-center gap-3 justify-center lg:justify-start">
-                <div
-                  class="flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-4 py-3 text-sm font-medium">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  <span id="hero-waitlist-success-text">You're on the list! We'll notify you at launch. 🎉</span>
-                </div>
-              </div>
-
-              <!-- Hero error -->
-              <div id="hero-waitlist-error" class="hidden mt-4 justify-center lg:justify-start">
-                <div class="flex items-center gap-2 bg-red-500/20 border border-red-400/30 text-red-300 rounded-xl px-4 py-3 text-sm font-medium">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                  <span id="hero-waitlist-error-text"></span>
-                </div>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center flex-shrink-0 btn-gradient brand-glow text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap"
+                  aria-label="Download Spendora on the App Store">
+                  Download on the App Store
+                </a>
+                <a href="#features"
+                  class="inline-flex items-center justify-center bg-white/10 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/15 transition-all text-sm whitespace-nowrap">
+                  Explore Features
+                </a>
               </div>
 
               <!-- Trust metrics -->
@@ -599,7 +560,7 @@
                 </div>
                 <div class="hero-proof-item">
                   <strong>$0</strong>
-                  <span>to join waitlist</span>
+                  <span>to get started</span>
                 </div>
               </div>
             </div>
@@ -988,7 +949,7 @@
             Secure JWT Auth</span>
           <span
             class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">📱
-            iOS &amp; Android</span>
+            iPhone</span>
         </div>
 
       </div>
@@ -1422,9 +1383,9 @@
     </section>
 
     <!-- ================================================================ -->
-    <!-- WAITLIST CTA SECTION -->
+    <!-- DOWNLOAD CTA SECTION -->
     <!-- ================================================================ -->
-    <section id="waitlist" class="py-20 lg:py-28 hero-gradient relative overflow-hidden">
+    <section id="download" class="py-20 lg:py-28 hero-gradient relative overflow-hidden">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
 
         <div class="fade-up">
@@ -1434,66 +1395,38 @@
 
           <div class="section-badge mb-4" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.9);">
             <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
-            Coming Soon
+            Available Now
           </div>
 
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-            Get the launch invite before everyone else.
+            Download Spendora on your iPhone.
           </h2>
           <p class="text-white/65 text-base lg:text-lg mb-10 max-w-lg mx-auto">
-            Join the early list for launch updates, first access, and a front-row seat as Spendora rolls out on mobile.
+            Start tracking daily expenses, budgets, shared bills, and monthly reports in one clean mobile dashboard.
           </p>
 
-          <!-- Waitlist form -->
-          <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            onsubmit="handleWaitlist(event, 'main')">
-            <input type="email" placeholder="your@email.com" required
-              class="waitlist-input flex-1 bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-5 py-4 text-sm font-medium focus:bg-white/15 focus:border-white/40 transition-all"
-              aria-label="Your email address" />
-            <button type="submit"
-              class="flex-shrink-0 bg-white text-primary font-bold px-7 py-4 rounded-xl hover:bg-gray-50 active:scale-95 transition-all text-sm shadow-btn-primary whitespace-nowrap">
-              Notify Me
-            </button>
-          </form>
-
-          <!-- Success state -->
-          <div id="main-waitlist-success" class="waitlist-success mt-4 flex-col items-center gap-2">
-            <div
-              class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl px-5 py-3 text-sm font-medium">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              <span id="main-waitlist-success-text">You're on the list! We'll be in touch soon. 🎉</span>
-            </div>
-          </div>
-
-          <!-- Error state -->
-          <div id="main-waitlist-error" class="hidden mt-4">
-            <div class="inline-flex items-center gap-2 bg-red-500/20 border border-red-400/30 text-red-300 rounded-xl px-5 py-3 text-sm font-medium">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-              </svg>
-              <span id="main-waitlist-error-text"></span>
-            </div>
-          </div>
+          <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center justify-center bg-white text-primary font-bold px-8 py-4 rounded-xl hover:bg-gray-50 active:scale-95 transition-all text-sm shadow-btn-primary"
+            aria-label="Download Spendora on the App Store">
+            Download on the App Store
+          </a>
 
           <!-- Perks -->
           <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
               <div class="text-2xl mb-2">⚡</div>
-              <p class="text-white font-semibold text-sm">Early Access</p>
-              <p class="text-white/50 text-xs mt-1">First to use the app before public launch</p>
+              <p class="text-white font-semibold text-sm">Fast Logging</p>
+              <p class="text-white/50 text-xs mt-1">Add everyday expenses in just a few taps</p>
             </div>
             <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
               <div class="text-2xl mb-2">🎁</div>
-              <p class="text-white font-semibold text-sm">Exclusive Perks</p>
-              <p class="text-white/50 text-xs mt-1">Special features reserved for waitlist members</p>
+              <p class="text-white font-semibold text-sm">Budgets & Reports</p>
+              <p class="text-white/50 text-xs mt-1">See spending patterns without extra setup</p>
             </div>
             <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
               <div class="text-2xl mb-2">🔔</div>
-              <p class="text-white font-semibold text-sm">Launch Alerts</p>
-              <p class="text-white/50 text-xs mt-1">Be notified the second we go live on iOS &amp; Android</p>
+              <p class="text-white font-semibold text-sm">Bill Splitting</p>
+              <p class="text-white/50 text-xs mt-1">Keep shared expenses clear with groups</p>
             </div>
           </div>
 
@@ -1530,7 +1463,7 @@
             <li><a href="#features" class="text-gray-400 text-sm hover:text-white transition-colors">Features</a></li>
             <li><a href="#how-it-works" class="text-gray-400 text-sm hover:text-white transition-colors">How It
                 Works</a></li>
-            <li><a href="#waitlist" class="text-gray-400 text-sm hover:text-white transition-colors">Join Waitlist</a>
+            <li><a href="#download" class="text-gray-400 text-sm hover:text-white transition-colors">Download</a>
             </li>
           </ul>
         </div>
@@ -1666,96 +1599,6 @@
       });
     });
 
-    // ── Waitlist form handler ─────────────────────────────────────────
-    const API_BASE_URL = 'https://api.spendorapp.com';
-    const WAITLIST_STORAGE_KEY = 'spendora_waitlist';
-    const WAITLIST_MESSAGE_STORAGE_KEY = 'spendora_waitlist_message';
-    const WAITLIST_SUCCESS_MESSAGE = "You have successfully joined the waitlist. We\'ll notify you at launch. 🎉";
-    const WAITLIST_ALREADY_JOINED_MESSAGE = "You are already on waitlist. Stay tuned for updates!";
-
-    function setWaitlistJoinedState(message) {
-      const heroForm = document.getElementById('hero-waitlist-form');
-      const heroSuccess = document.getElementById('hero-waitlist-success');
-      const heroSuccessText = document.getElementById('hero-waitlist-success-text');
-      const mainForm = document.getElementById('waitlist-form');
-      const mainSuccess = document.getElementById('main-waitlist-success');
-      const mainSuccessText = document.getElementById('main-waitlist-success-text');
-      const successMessage = message || WAITLIST_SUCCESS_MESSAGE;
-
-      if (heroForm) heroForm.style.display = 'none';
-      if (mainForm) mainForm.style.display = 'none';
-      if (heroSuccessText) heroSuccessText.textContent = successMessage;
-      if (mainSuccessText) mainSuccessText.textContent = successMessage;
-      if (heroSuccess) {
-        heroSuccess.classList.add('show');
-        heroSuccess.style.display = 'flex';
-      }
-      if (mainSuccess) {
-        mainSuccess.classList.add('show');
-        mainSuccess.style.display = 'flex';
-      }
-    }
-
-    async function handleWaitlist(e, source) {
-      e.preventDefault();
-      const form = e.target;
-      const email = form.querySelector('input[type="email"]').value;
-      const submitButton = form.querySelector('button[type="submit"]');
-
-      submitButton.disabled = true;
-      submitButton.dataset.originalText = submitButton.textContent;
-      submitButton.textContent = 'Joining...';
-
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/waitlist`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        });
-
-        const result = await response.json().catch(() => ({}));
-
-        if (!response.ok || result.success === false) {
-          throw new Error(result.message || 'Unable to join the waitlist right now.');
-        }
-
-        const successMessage = result.message || WAITLIST_SUCCESS_MESSAGE;
-        const existing = JSON.parse(localStorage.getItem(WAITLIST_STORAGE_KEY) || '[]');
-        if (!existing.includes(email)) {
-          existing.push(email);
-          localStorage.setItem(WAITLIST_STORAGE_KEY, JSON.stringify(existing));
-        }
-        localStorage.setItem(WAITLIST_MESSAGE_STORAGE_KEY, successMessage);
-
-        setWaitlistJoinedState(successMessage);
-      } catch (error) {
-        const msg = error.message || 'Unable to join the waitlist right now.';
-        if (source === 'hero') {
-          const el = document.getElementById('hero-waitlist-error');
-          const txt = document.getElementById('hero-waitlist-error-text');
-          if (txt) txt.textContent = msg;
-          if (el) { el.classList.remove('hidden'); el.style.display = 'flex'; }
-        } else {
-          const el = document.getElementById('main-waitlist-error');
-          const txt = document.getElementById('main-waitlist-error-text');
-          if (txt) txt.textContent = msg;
-          if (el) { el.classList.remove('hidden'); el.style.display = 'flex'; }
-        }
-        submitButton.disabled = false;
-        submitButton.textContent = submitButton.dataset.originalText;
-      }
-    }
-
-    // Restore success state if already signed up
-    window.addEventListener('load', () => {
-      const list = JSON.parse(localStorage.getItem(WAITLIST_STORAGE_KEY) || '[]');
-      if (list.length > 0) {
-        const savedMessage = localStorage.getItem(WAITLIST_MESSAGE_STORAGE_KEY);
-        setWaitlistJoinedState(savedMessage || WAITLIST_ALREADY_JOINED_MESSAGE);
-      }
-    });
   </script>
 
 </body>
