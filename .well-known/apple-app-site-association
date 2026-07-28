@@ -7,6 +7,10 @@
           {
             "/": "/join/*",
             "comment": "Group invite links open the Spendora app"
+          },
+          {
+            "/": "/plaid-oauth",
+            "comment": "Plaid OAuth redirect resumes the bank connection in-app"
           }
         ]
       }
