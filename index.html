@@ -4,16 +4,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spendora — Expense Tracker, Budgets &amp; Bill Splitting | iPhone</title>
+  <title>Spendora — Expense Tracker, Budgets &amp; Bill Splitting | iPhone &amp; Android</title>
   <meta name="description"
-    content="Track expenses, set budgets, and split bills with Spendora. Download Spendora on iPhone from the App Store." />
+    content="Track expenses, set budgets, and split bills with Spendora. Download free on the App Store and Google Play." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Spendora — Personal Finance App" />
   <meta property="og:description"
-    content="Track expenses, set budgets, and split bills with Spendora. Download Spendora on iPhone from the App Store." />
+    content="Track expenses, set budgets, and split bills with Spendora. Download free on the App Store and Google Play." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/spendora_logo.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Spendora — Personal Finance App" />
+  <meta name="twitter:description"
+    content="Track expenses, set budgets, and split bills with Spendora. Download free on the App Store and Google Play." />
+  <meta name="twitter:image" content="assets/spendora_logo.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Spendora",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "iOS, Android",
+      "description": "Track expenses, set budgets, and split bills with Spendora.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "installUrl": [
+        "https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164",
+        "https://play.google.com/store/apps/details?id=com.spendora.mobile"
+      ]
+    }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -427,6 +455,88 @@
         display: none;
       }
     }
+
+    /* Store download buttons (App Store / Google Play) */
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+    }
+
+    .store-btn:active {
+      transform: scale(0.96);
+    }
+
+    .store-btn svg {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+    }
+
+    .store-btn-label {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      text-align: left;
+    }
+
+    .store-btn-label small {
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .store-btn-label strong {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* Dark variant — for light backgrounds */
+    .store-btn-dark {
+      background: #0F172A;
+      color: #FFFFFF;
+      border: 1px solid #0F172A;
+    }
+
+    .store-btn-dark:hover {
+      background: #1E293B;
+    }
+
+    /* Light variant — for dark/gradient backgrounds */
+    .store-btn-light {
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.18);
+    }
+
+    .store-btn-light:hover {
+      background: #F8FAFC;
+    }
+
+    /* Outline variant — subtle, for footer */
+    .store-btn-outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .store-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
   </style>
 </head>
 
@@ -439,8 +549,8 @@
     class="announcement-bar py-4 sm:py-5 px-4 text-center text-white text-base sm:text-lg font-medium relative z-[60]">
     <span class="inline-flex items-center gap-3 justify-center flex-wrap">
       <span class="pulse-dot inline-block w-2.5 h-2.5 rounded-full bg-white/80 flex-shrink-0"></span>
-      <strong>Spendora is now on the App Store</strong> · Track expenses, budgets, and shared bills in one place.
-      <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
+      <strong>Spendora is now on iPhone and Android</strong> · Track expenses, budgets, and shared bills in one place.
+      <a href="#download"
         class="underline underline-offset-4 font-bold hover:text-white/80 transition-colors ml-1">Download
         Now
       </a>
@@ -474,9 +584,9 @@
 
         <!-- Desktop CTA -->
         <div class="hidden md:block">
-          <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
+          <a href="#download"
             class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-primary-dark transition-colors shadow-btn-primary"
-            aria-label="Download Spendora on the App Store">
+            aria-label="Download Spendora for iPhone or Android">
             Download App
           </a>
         </div>
@@ -503,8 +613,8 @@
           <a href="#download"
             class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Download</a>
           <div class="pt-2 px-4">
-            <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
-              class="block text-center bg-primary text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-dark transition-colors">
+            <a href="#download"
+              class="mobile-nav-link block text-center bg-primary text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-primary-dark transition-colors">
               Download App
             </a>
           </div>
@@ -527,7 +637,7 @@
             <div class="text-center lg:text-left">
               <div class="hero-kicker mb-5">
                 <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5 align-middle"></span>
-                Available now on the App Store
+                Now on the App Store and Google Play
               </div>
               <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                 Make every dollar feel easier to <span class="money-word">understand.</span>
@@ -536,15 +646,37 @@
                 Spendora turns daily spending, budgets, and shared bills into one calm mobile dashboard.
               </p>
 
-              <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
-                <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center flex-shrink-0 btn-gradient brand-glow text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 active:scale-95 transition-all text-sm whitespace-nowrap"
+              <div class="store-buttons justify-center lg:justify-start">
+                <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank"
+                  rel="noopener noreferrer" class="store-btn store-btn-light brand-glow"
                   aria-label="Download Spendora on the App Store">
-                  Download on the App Store
+                  <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-36.8-2.8-77 21.3-91.7 21.3-15.5 0-51.1-20.3-79.1-20.3C61.2 141.2 8 184.5 8 271.6c0 25.7 4.7 52.3 14.1 79.7 12.6 36 61.3 122.7 112.1 121.1 26.6-.6 45.4-18.8 80-18.8 33.6 0 51 18.8 80.6 18.8 51.2-.7 95.2-79.5 107.2-115.6-68.6-32.3-83.3-95.9-83.3-98.1zm-51.9-159.4c25-29.7 22.7-56.7 22-66.4-22.1 1.3-47.7 15-62.3 32-16.1 18.2-25.6 40.7-23.6 65.9 23.9 1.8 45.7-10.5 63.9-31.5z" />
+                  </svg>
+                  <span class="store-btn-label">
+                    <small>Download on the</small>
+                    <strong>App Store</strong>
+                  </span>
                 </a>
+                <a href="https://play.google.com/store/apps/details?id=com.spendora.mobile" target="_blank"
+                  rel="noopener noreferrer" class="store-btn store-btn-light brand-glow"
+                  aria-label="Get Spendora on Google Play">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M4.5 2.4 19 12 4.5 21.6a1 1 0 0 1-1.5-.85V3.25a1 1 0 0 1 1.5-.85z" />
+                  </svg>
+                  <span class="store-btn-label">
+                    <small>Get it on</small>
+                    <strong>Google Play</strong>
+                  </span>
+                </a>
+              </div>
+
+              <div class="mt-4 flex justify-center lg:justify-start">
                 <a href="#features"
-                  class="inline-flex items-center justify-center bg-white/10 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/15 transition-all text-sm whitespace-nowrap">
+                  class="inline-flex items-center gap-1.5 text-white/70 hover:text-white font-semibold text-sm transition-colors">
                   Explore Features
+                  <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
 
@@ -949,7 +1081,7 @@
             Secure JWT Auth</span>
           <span
             class="inline-flex items-center gap-2 bg-surface border border-border px-4 py-2 rounded-full text-sm text-text-muted font-medium shadow-sm">📱
-            iPhone</span>
+            iPhone &amp; Android</span>
         </div>
 
       </div>
@@ -1399,17 +1531,36 @@
           </div>
 
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-            Download Spendora on your iPhone.
+            Download Spendora on iPhone or Android.
           </h2>
           <p class="text-white/65 text-base lg:text-lg mb-10 max-w-lg mx-auto">
             Start tracking daily expenses, budgets, shared bills, and monthly reports in one clean mobile dashboard.
           </p>
 
-          <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center justify-center bg-white text-primary font-bold px-8 py-4 rounded-xl hover:bg-gray-50 active:scale-95 transition-all text-sm shadow-btn-primary"
-            aria-label="Download Spendora on the App Store">
-            Download on the App Store
-          </a>
+          <div class="store-buttons justify-center">
+            <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank"
+              rel="noopener noreferrer" class="store-btn store-btn-light"
+              aria-label="Download Spendora on the App Store">
+              <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-36.8-2.8-77 21.3-91.7 21.3-15.5 0-51.1-20.3-79.1-20.3C61.2 141.2 8 184.5 8 271.6c0 25.7 4.7 52.3 14.1 79.7 12.6 36 61.3 122.7 112.1 121.1 26.6-.6 45.4-18.8 80-18.8 33.6 0 51 18.8 80.6 18.8 51.2-.7 95.2-79.5 107.2-115.6-68.6-32.3-83.3-95.9-83.3-98.1zm-51.9-159.4c25-29.7 22.7-56.7 22-66.4-22.1 1.3-47.7 15-62.3 32-16.1 18.2-25.6 40.7-23.6 65.9 23.9 1.8 45.7-10.5 63.9-31.5z" />
+              </svg>
+              <span class="store-btn-label">
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.spendora.mobile" target="_blank"
+              rel="noopener noreferrer" class="store-btn store-btn-light" aria-label="Get Spendora on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.5 2.4 19 12 4.5 21.6a1 1 0 0 1-1.5-.85V3.25a1 1 0 0 1 1.5-.85z" />
+              </svg>
+              <span class="store-btn-label">
+                <small>Get it on</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
 
           <!-- Perks -->
           <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -1454,6 +1605,31 @@
           <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
             Know where your money goes. Track expenses, set budgets, and split bills — all in one place.
           </p>
+
+          <div class="store-buttons mt-6">
+            <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank"
+              rel="noopener noreferrer" class="store-btn store-btn-outline"
+              aria-label="Download Spendora on the App Store">
+              <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-36.8-2.8-77 21.3-91.7 21.3-15.5 0-51.1-20.3-79.1-20.3C61.2 141.2 8 184.5 8 271.6c0 25.7 4.7 52.3 14.1 79.7 12.6 36 61.3 122.7 112.1 121.1 26.6-.6 45.4-18.8 80-18.8 33.6 0 51 18.8 80.6 18.8 51.2-.7 95.2-79.5 107.2-115.6-68.6-32.3-83.3-95.9-83.3-98.1zm-51.9-159.4c25-29.7 22.7-56.7 22-66.4-22.1 1.3-47.7 15-62.3 32-16.1 18.2-25.6 40.7-23.6 65.9 23.9 1.8 45.7-10.5 63.9-31.5z" />
+              </svg>
+              <span class="store-btn-label">
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.spendora.mobile" target="_blank"
+              rel="noopener noreferrer" class="store-btn store-btn-outline" aria-label="Get Spendora on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.5 2.4 19 12 4.5 21.6a1 1 0 0 1-1.5-.85V3.25a1 1 0 0 1 1.5-.85z" />
+              </svg>
+              <span class="store-btn-label">
+                <small>Get it on</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
         </div>
 
         <!-- Quick links -->

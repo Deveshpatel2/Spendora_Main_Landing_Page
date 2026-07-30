@@ -56,6 +56,7 @@
 
     <div class="stores">
       <a class="store" id="appStore" href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164">App Store</a>
+      <a class="store" id="playStore" href="https://play.google.com/store/apps/details?id=com.spendora.mobile">Google Play</a>
     </div>
 
     <p class="hint">Don't have the app yet? Install it, then tap the invite link again.</p>
@@ -74,6 +75,13 @@
         openApp.setAttribute('href', 'com.spendora.mobile://join/' + encodeURIComponent(token));
       } else {
         openApp.style.display = 'none';
+      }
+
+      // Put the store matching the visitor's platform first. Both stay visible so a
+      // desktop visitor (or a mis-detected UA) can still reach either listing.
+      if (/android/i.test(navigator.userAgent)) {
+        var stores = document.querySelector('.stores');
+        stores.insertBefore(document.getElementById('playStore'), document.getElementById('appStore'));
       }
     })();
   </script>
