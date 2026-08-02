@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Returning to Spendora</title>
+  <meta name="description" content="Finishing your secure bank connection with Spendora." />
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --blue: #3B82F6; --blue-dark: #2563EB; --ink: #0B1020; --muted: #6B7280; --green: #10B981; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(160deg, #EFF6FF 0%, #ffffff 55%);
+      color: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; min-height: 100%;
+    }
+    .card {
+      width: 100%; max-width: 420px; background: #fff; border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(37, 99, 235, 0.16); padding: 36px 28px; text-align: center;
+    }
+    .logo {
+      width: 72px; height: 72px; border-radius: 20px; margin: 0 auto 20px;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 34px; font-weight: 800;
+    }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    p { color: var(--muted); font-size: 15px; line-height: 1.5; margin: 0 0 24px; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; height: 54px; border-radius: 14px; border: 0; cursor: pointer;
+      font-size: 16px; font-weight: 700; text-decoration: none; margin-bottom: 12px;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:active { background: var(--blue-dark); }
+    .spinner {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 3px solid rgba(37,99,235,0.25); border-top-color: var(--blue-dark);
+      margin: 0 auto 18px; animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+    .stores { display: flex; gap: 12px; margin-top: 8px; }
+    .store {
+      flex: 1; height: 50px; border-radius: 12px; border: 1px solid #E5E7EB; background: #fff;
+      color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lock { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: 13px; font-weight: 600; margin-top: 18px; }
+    .hint { font-size: 13px; color: var(--muted); margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">S</div>
+    <div class="spinner" aria-hidden="true"></div>
+    <h1>Finishing your bank connection</h1>
+    <p>Hang tight — we're taking you back to the Spendora app to securely finish linking your bank.</p>
+
+    <a id="openApp" class="btn btn-primary" href="#">Return to Spendora</a>
+
+    <div class="stores">
+      <a class="store" id="appStore" href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164">App Store</a>
+      <a class="store" id="playStore" href="https://play.google.com/store/apps/details?id=com.spendora.mobile">Google Play</a>
+    </div>
+
+    <span class="lock">🔒 Secured by Plaid</span>
+    <p class="hint">If nothing happens, tap “Return to Spendora” above.</p>
+  </main>
+
+  <script>
+    // Plaid redirects here as https://spendorapp.com/plaid-oauth?oauth_state_id=...
+    // When the app is installed and the domain is verified, iOS/Android open the app
+    // directly via the universal/app link and the Plaid SDK resumes the session — this
+    // page is never shown. This page is the FALLBACK (app not installed, verification not
+    // yet propagated, or opened in a desktop browser). It forwards the SAME query string
+    // to the app via its custom scheme as a best-effort resume, and offers the stores.
+    (function () {
+      var search = window.location.search || '';               // keeps oauth_state_id intact
+      var appLink = 'com.spendora.mobile://plaid-oauth' + search;
+
+      document.getElementById('openApp').setAttribute('href', appLink);
+
+      // Put the visitor's platform store first (both stay reachable on desktop/mis-detect).
+      if (/android/i.test(navigator.userAgent)) {
+        var stores = document.querySelector('.stores');
+        stores.insertBefore(document.getElementById('playStore'), document.getElementById('appStore'));
+      }
+
+      // Soft auto-attempt to reopen the app. Harmless if the app isn't installed —
+      // the user still sees the button and store links.
+      var isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+      if (isMobile) {
+        setTimeout(function () { window.location.href = appLink; }, 400);
+      }
+    })();
+  </script>
+</body>
+</html>
