@@ -68,6 +68,9 @@
             primary: '#2563EB',
             'primary-dark': '#1D4ED8',
             'primary-light': '#EFF6FF',
+            honey: '#FF9E2C',
+            'honey-light': '#FFF3E2',
+            'honey-dark': '#E4820F',
             bg: '#F5F7FA',
             surface: '#FFFFFF',
             'surface-2': '#F8FAFC',
@@ -104,6 +107,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -111,6 +115,8 @@
       background-color: #F5F7FA;
       color: #0F172A;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* Premium backgrounds */
@@ -154,7 +160,7 @@
     }
 
     .money-word {
-      background: linear-gradient(90deg, #BFDBFE, #60A5FA, #FFFFFF);
+      background: linear-gradient(90deg, #FFD9A0, #FF9E2C, #FFC876);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -378,6 +384,43 @@
       margin-bottom: 12px;
     }
 
+    /* Honey variant — warm accent, used sparingly */
+    .section-badge-honey {
+      display: inline-block;
+      background: #FFF3E2;
+      color: #B45309;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .btn-honey {
+      background: linear-gradient(135deg, #F5900F 0%, #FF9E2C 55%, #FFB454 100%);
+      color: #3A2400;
+    }
+
+    /* Bento feature grid */
+    .feature-hi {
+      background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 55%, #3B82F6 100%);
+      color: #fff;
+    }
+
+    .feature-hi::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255, 158, 44, 0.35), transparent 70%);
+      pointer-events: none;
+    }
+
     /* Announcement banner */
     .announcement-bar {
       background: linear-gradient(90deg, #1D4ED8, #2563EB, #3B82F6, #2563EB, #1D4ED8);
@@ -447,6 +490,11 @@
 
       .comparison-row {
         grid-template-columns: 1fr;
+      }
+
+      /* decorative rings extend past the screen edge — hide on phones */
+      .hero-orbit {
+        display: none;
       }
     }
 
@@ -609,7 +657,8 @@
             class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">How
             It Works</a>
           <a href="#screenshots"
-            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">App Preview</a>
+            class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">App
+            Preview</a>
           <a href="#download"
             class="mobile-nav-link px-4 py-3 text-white/80 font-medium rounded-xl hover:bg-white/10 transition-colors">Download</a>
           <div class="pt-2 px-4">
@@ -845,8 +894,7 @@
 
                       <div class="space-y-3">
                         <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm">
-                          <div
-                            class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
+                          <div class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                               <path d="M4 3v7a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V3" />
@@ -863,8 +911,7 @@
                         </div>
 
                         <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm">
-                          <div
-                            class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
+                          <div class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                               <circle cx="9" cy="21" r="1" />
@@ -880,63 +927,64 @@
                         </div>
                       </div>
 
-                    <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm border-l-4 border-success">
-                      <svg class="text-warning flex-shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5A4.8 4.8 0 0 0 18 8a6 6 0 0 0-12 0c0 1.3.5 2.5 1.5 3.5.8.8 1.3 1.5 1.5 2.5" />
-                        <path d="M9 18h6" />
-                        <path d="M10 22h4" />
-                      </svg>
-                      <p class="text-xs font-bold text-text-muted">Your spending is right on track for the month.</p>
-                    </div>
+                      <div class="bg-white rounded-2xl p-3 flex items-center gap-3 shadow-sm border-l-4 border-success">
+                        <svg class="text-warning flex-shrink-0" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          aria-hidden="true">
+                          <path
+                            d="M15 14c.2-1 .7-1.7 1.5-2.5A4.8 4.8 0 0 0 18 8a6 6 0 0 0-12 0c0 1.3.5 2.5 1.5 3.5.8.8 1.3 1.5 1.5 2.5" />
+                          <path d="M9 18h6" />
+                          <path d="M10 22h4" />
+                        </svg>
+                        <p class="text-xs font-bold text-text-muted">Your spending is right on track for the month.</p>
+                      </div>
 
                       <div class="mt-auto bg-white rounded-2xl shadow-card px-4 py-2 flex items-center justify-between">
                         <div class="flex flex-col items-center gap-1">
-                        <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="m3 10 9-7 9 7" />
-                            <path d="M5 10v10h14V10" />
-                            <path d="M9 20v-6h6v6" />
-                          </svg>
-                        </div>
+                          <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="m3 10 9-7 9 7" />
+                              <path d="M5 10v10h14V10" />
+                              <path d="M9 20v-6h6v6" />
+                            </svg>
+                          </div>
                           <span class="text-[10px] text-primary font-bold">Home</span>
                         </div>
-                      <div class="flex flex-col items-center gap-1">
-                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
-                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
-                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-                          </svg>
+                        <div class="flex flex-col items-center gap-1">
+                          <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+                              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                            </svg>
+                          </div>
+                          <span class="text-[10px] text-text-muted font-semibold">Expense</span>
                         </div>
-                        <span class="text-[10px] text-text-muted font-semibold">Expense</span>
-                      </div>
                         <div
                           class="w-11 h-11 -mt-6 rounded-full bg-primary text-white flex items-center justify-center text-3xl shadow-btn-primary border-8 border-blue-100">
                           +
                         </div>
-                      <div class="flex flex-col items-center gap-1">
-                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
-                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                          </svg>
+                        <div class="flex flex-col items-center gap-1">
+                          <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                              <circle cx="9" cy="7" r="4" />
+                              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            </svg>
+                          </div>
+                          <span class="text-[10px] text-text-muted font-semibold">Split</span>
                         </div>
-                        <span class="text-[10px] text-text-muted font-semibold">Split</span>
-                      </div>
-                      <div class="flex flex-col items-center gap-1">
-                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
-                          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M21 12a9 9 0 1 1-9-9v9z" />
-                            <path d="M21 12h-9V3" />
-                          </svg>
+                        <div class="flex flex-col items-center gap-1">
+                          <div class="w-6 h-6 rounded-lg flex items-center justify-center text-text-muted">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M21 12a9 9 0 1 1-9-9v9z" />
+                              <path d="M21 12h-9V3" />
+                            </svg>
+                          </div>
+                          <span class="text-[10px] text-text-muted font-semibold">Budget</span>
                         </div>
-                        <span class="text-[10px] text-text-muted font-semibold">Budget</span>
-                      </div>
                       </div>
                     </div>
 
@@ -1009,20 +1057,42 @@
           </p>
         </div>
 
-        <!-- Feature cards grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature cards grid (bento) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
 
+          <!-- Big: Daily Money Snapshot -->
           <div
-            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
-              style="background:#EFF6FF;">📊</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Daily Money Snapshot</h3>
-            <p class="text-text-muted text-sm leading-relaxed">See your total spending, budget progress, and recent
-              transactions at a glance. Stay on top of your finances every day.</p>
+            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border sm:col-span-2 lg:col-span-4 flex flex-col">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                style="background:#EFF6FF;">📊</div>
+              <div>
+                <h3 class="font-bold text-lg text-text-main mb-2">Daily Money Snapshot</h3>
+                <p class="text-text-muted text-sm leading-relaxed">See your total spending, budget progress, and recent
+                  transactions at a glance. Stay on top of your finances every day.</p>
+              </div>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="bg-surface-2 rounded-xl p-3.5 border border-border-light">
+                <p class="text-xs text-text-muted font-medium">This month</p>
+                <p class="text-xl font-extrabold text-text-main mt-0.5">$1,240</p>
+                <div class="mt-2 h-1.5 bg-blue-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-primary rounded-full" style="width:29%;"></div>
+                </div>
+              </div>
+              <div class="bg-surface-2 rounded-xl p-3.5 border border-border-light">
+                <p class="text-xs text-text-muted font-medium">Left to spend</p>
+                <p class="text-xl font-extrabold text-success mt-0.5">$3,060</p>
+                <div class="mt-2 h-1.5 bg-green-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-success rounded-full" style="width:71%;"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- Fast Expense Tracking -->
           <div
-            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border lg:col-span-2">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFF7ED;">💸</div>
             <h3 class="font-bold text-lg text-text-main mb-2">Fast Expense Tracking</h3>
@@ -1030,26 +1100,19 @@
               and notes that keep your history searchable.</p>
           </div>
 
+          <!-- Smart Budget Signals -->
           <div
-            class="fade-up fade-up-delay-3 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border lg:col-span-2">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
-              style="background:#F0FDF4;">💰</div>
+              style="background:#FFF3E2;">💰</div>
             <h3 class="font-bold text-lg text-text-main mb-2">Smart Budget Signals</h3>
             <p class="text-text-muted text-sm leading-relaxed">Set monthly limits by category and see clear visual
               signals before small habits turn into overspending.</p>
           </div>
 
+          <!-- Useful Reports -->
           <div
-            class="fade-up fade-up-delay-1 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
-              style="background:#F5F3FF;">👥</div>
-            <h3 class="font-bold text-lg text-text-main mb-2">Stress-Free Splits</h3>
-            <p class="text-text-muted text-sm leading-relaxed">Create groups for trips, roommates, or dinners. Track who
-              owes who and settle up with one tap. No more awkward math.</p>
-          </div>
-
-          <div
-            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            class="fade-up fade-up-delay-2 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border lg:col-span-2">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFF1F2;">📈</div>
             <h3 class="font-bold text-lg text-text-main mb-2">Useful Reports</h3>
@@ -1057,13 +1120,39 @@
               Export your data as PDF or CSV when you need records.</p>
           </div>
 
+          <!-- Recurring Expenses -->
           <div
-            class="fade-up fade-up-delay-3 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border">
+            class="fade-up fade-up-delay-3 feature-card bg-surface rounded-2xl p-6 shadow-card card-hover border border-border lg:col-span-2">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
               style="background:#FFFBEB;">🔁</div>
             <h3 class="font-bold text-lg text-text-main mb-2">Recurring Expenses</h3>
             <p class="text-text-muted text-sm leading-relaxed">Track daily, weekly, biweekly, monthly, or yearly bills
               so subscriptions and repeat payments never sneak up on you.</p>
+          </div>
+
+          <!-- Wide highlight: Stress-Free Splits -->
+          <div
+            class="fade-up feature-hi relative overflow-hidden rounded-2xl p-6 lg:p-8 shadow-card sm:col-span-2 lg:col-span-6">
+            <div class="grid lg:grid-cols-[1.25fr_1fr] gap-6 lg:gap-10 items-center relative" style="z-index:1;">
+              <div>
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+                  style="background:rgba(255,255,255,0.16);">👥</div>
+                <h3 class="font-extrabold text-xl lg:text-2xl mb-2">Stress-Free Splits</h3>
+                <p class="text-blue-100 text-sm leading-relaxed max-w-lg">Create groups for trips, roommates, or
+                  dinners.
+                  Track who owes who and settle up with one tap — no more awkward math or chasing friends.</p>
+              </div>
+              <div class="hidden lg:flex flex-col gap-2.5">
+                <div class="flex items-center justify-between bg-white/12 border border-white/20 rounded-xl px-4 py-3">
+                  <span class="text-sm font-medium text-white/90">Dev owes you</span>
+                  <span class="text-sm font-extrabold" style="color:#FFD9A0;">+$34.50</span>
+                </div>
+                <div class="flex items-center justify-between bg-white/12 border border-white/20 rounded-xl px-4 py-3">
+                  <span class="text-sm font-medium text-white/90">You owe Heyt</span>
+                  <span class="text-sm font-bold text-white/80">-$12.00</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1084,6 +1173,93 @@
             iPhone &amp; Android</span>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- REAL APP SCREENSHOT -->
+    <!-- ================================================================ -->
+    <section class="py-20 lg:py-28" style="background: linear-gradient(160deg, #EFF6FF 0%, #F5F7FA 62%);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left: real screenshot -->
+          <div class="fade-up flex justify-center">
+            <div class="relative">
+              <div class="absolute -inset-6 rounded-full blur-3xl -z-10"
+                style="background: radial-gradient(circle, rgba(255,158,44,0.16), transparent 70%);"></div>
+              <div class="phone-frame w-64 sm:w-72" style="max-width:284px;">
+                <div class="phone-screen" style="aspect-ratio: 9 / 19.48;">
+                  <img src="assets/dashboard.png"
+                    alt="The real Spendora dashboard on iPhone: this month's total spending, budget progress, and recent expenses"
+                    class="w-full h-full object-cover object-top" loading="lazy" width="900" height="1947" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: text -->
+          <div class="fade-up fade-up-delay-2">
+            <div class="section-badge-honey">Real app · Real screens</div>
+            <h2 class="section-title mt-2 mb-4">Not a mockup.<br />This is the actual app.</h2>
+            <p class="text-text-muted text-base leading-relaxed mb-7">
+              Straight from an iPhone — the moment you open Spendora you see this month's spending, how much budget is
+              left, and your latest expenses. No setup screens, no clutter.
+            </p>
+            <ul class="space-y-3.5 mb-8">
+              <li class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                  style="background:#FFF3E2;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E4820F" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <span class="text-sm text-text-main font-medium">Everything on one calm home screen</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                  style="background:#FFF3E2;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E4820F" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <span class="text-sm text-text-main font-medium">Budgets and balances update the instant you add an
+                  expense</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                  style="background:#FFF3E2;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E4820F" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <span class="text-sm text-text-main font-medium">Looks just as good in light or dark mode</span>
+              </li>
+            </ul>
+            <div class="store-buttons">
+              <a href="https://apps.apple.com/us/app/spendora-expense-tracker/id6769786164" target="_blank"
+                rel="noopener noreferrer" class="store-btn store-btn-dark"
+                aria-label="Download Spendora on the App Store">
+                <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-36.8-2.8-77 21.3-91.7 21.3-15.5 0-51.1-20.3-79.1-20.3C61.2 141.2 8 184.5 8 271.6c0 25.7 4.7 52.3 14.1 79.7 12.6 36 61.3 122.7 112.1 121.1 26.6-.6 45.4-18.8 80-18.8 33.6 0 51 18.8 80.6 18.8 51.2-.7 95.2-79.5 107.2-115.6-68.6-32.3-83.3-95.9-83.3-98.1zm-51.9-159.4c25-29.7 22.7-56.7 22-66.4-22.1 1.3-47.7 15-62.3 32-16.1 18.2-25.6 40.7-23.6 65.9 23.9 1.8 45.7-10.5 63.9-31.5z" />
+                </svg>
+                <span class="store-btn-label"><small>Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.spendora.mobile" target="_blank"
+                rel="noopener noreferrer" class="store-btn store-btn-dark" aria-label="Get Spendora on Google Play">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4.5 2.4 19 12 4.5 21.6a1 1 0 0 1-1.5-.85V3.25a1 1 0 0 1 1.5-.85z" />
+                </svg>
+                <span class="store-btn-label"><small>Get it on</small><strong>Google Play</strong></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -1216,7 +1392,7 @@
                       class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold">
                       J</div>
                     <div>
-                      <p class="text-sm font-medium text-text-main">Jamie owes you</p>
+                      <p class="text-sm font-medium text-text-main">Dev owes you</p>
                       <p class="text-xs text-text-muted">Hotel split</p>
                     </div>
                   </div>
@@ -1229,7 +1405,7 @@
                       class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs font-bold">
                       S</div>
                     <div>
-                      <p class="text-sm font-medium text-text-main">You owe Sam</p>
+                      <p class="text-sm font-medium text-text-main">You owe Heyt</p>
                       <p class="text-xs text-text-muted">Restaurant dinner</p>
                     </div>
                   </div>
@@ -1239,7 +1415,7 @@
 
               <!-- Settle up button -->
               <button
-                class="w-full btn-gradient text-white font-semibold py-3 rounded-xl text-sm transition-all hover:opacity-90 active:scale-95"
+                class="w-full btn-honey font-bold py-3 rounded-xl text-sm transition-all hover:opacity-90 active:scale-95"
                 aria-label="Settle up balances">
                 Settle Up →
               </button>
@@ -1628,6 +1804,21 @@
                 <small>Get it on</small>
                 <strong>Google Play</strong>
               </span>
+            </a>
+          </div>
+
+          <!-- Social -->
+          <div class="mt-6 flex items-center gap-3">
+            <span class="text-gray-500 text-xs font-semibold uppercase tracking-wider">Follow</span>
+            <a href="https://www.instagram.com/spendorapp_/" target="_blank" rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full flex items-center justify-center text-gray-300 border border-white/15 bg-white/5 hover:bg-white/[0.12] hover:text-white transition-colors"
+              aria-label="Follow Spendora on Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
             </a>
           </div>
         </div>
