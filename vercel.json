@@ -59,5 +59,29 @@
       "source": "/join/(.*)",
       "destination": "/join"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/admin",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.spendorapp.com"
+        }
+      ],
+      "destination": "https://spendorapp.com/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.spendorapp.com"
+        }
+      ],
+      "destination": "https://spendorapp.com/admin/:path*",
+      "permanent": false
+    }
   ]
 }
