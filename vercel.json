@@ -26,17 +26,38 @@
     {
       "source": "/.well-known/apple-app-site-association",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
       ]
     },
     {
       "source": "/.well-known/assetlinks.json",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
       ]
     }
   ],
   "rewrites": [
-    { "source": "/join/(.*)", "destination": "/join" }
+    {
+      "source": "/admin",
+      "destination": "https://api.spendorapp.com/admin"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://api.spendorapp.com/admin/:path*"
+    },
+    {
+      "source": "/spendora-telemetry",
+      "destination": "https://api.spendorapp.com/api/website-events"
+    },
+    {
+      "source": "/join/(.*)",
+      "destination": "/join"
+    }
   ]
 }
